@@ -1,0 +1,35 @@
+{
+  "name": "dungeons-and-components",
+  "version": "0.0.1",
+  "description": "A React component library for Dungeons and Dragons.",
+  "author": "Christopher Baker <christpher@hmudesign.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/HMUDesign/dungeons-and-components#readme",
+  "bugs": {
+    "url": "https://github.com/HMUDesign/dungeons-and-components/issues"
+  },
+  "scripts": {
+    "build": "rm -rf lib && cp -r src lib && NODE_ENV=production babel lib -d lib"
+  },
+  "main": "lib/dnc.js",
+  "module": "src/dnc.js",
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "depedencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "babel-plugin-emotion": "^10.0.23",
+    "babel-preset-react-app": "^9.0.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
