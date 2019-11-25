@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { withNoBreaks } from '../../utils/styled';
+import { withBreakable } from '../../utils/styled';
 
 export const Container = styled.div`
-  ${withNoBreaks}
+  ${withBreakable}
 `;
 
 export const List = styled.ul`

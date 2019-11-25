@@ -5,17 +5,21 @@ import getOrdinal from '../../utils/get-ordinal';
 
 import {
   Container,
+  Title,
   Level,
   LevelTitle,
   SpellList,
   SpellName,
 } from './spell-list.styled';
 
-export default function Spell({ spells, ...props }) {
+export default function Spell({ title, spells, ...props }) {
   const levels = useMemo(() => getLevels(spells), [ spells ]);
 
   return (
     <Container {...props}>
+      {title && (
+        <Title>{title}</Title>
+      )}
       {levels.map(([ level, spells ]) => (
         <Level key={level}>
           <LevelTitle>{ level === 0 ? `Cantrips (${0} Level)` : `${getOrdinal(level)} Level`}</LevelTitle>
@@ -31,6 +35,7 @@ export default function Spell({ spells, ...props }) {
 }
 
 Spell.propTypes = {
+  title: PropTypes.string,
   spells: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     level: PropTypes.number.isRequired,

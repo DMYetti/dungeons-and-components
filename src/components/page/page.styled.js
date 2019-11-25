@@ -7,7 +7,6 @@ export const Container = styled.div`
   column-count: 2;
   column-fill: auto;
   column-gap: 0.5in;
-  column-width: 3.5in;
 
   overflow: hidden;
   position: relative;
@@ -109,6 +108,10 @@ export const Heading1 = styled.h2`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
+
+  &:first-child {
+    margin-top: 0;
+  }
 `;
 
 export const Heading2 = styled.h3`
@@ -120,6 +123,10 @@ export const Heading2 = styled.h3`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
+
+  &:first-child {
+    margin-top: 0;
+  }
 `;
 
 export const Heading3 = styled.h4`
@@ -130,6 +137,10 @@ export const Heading3 = styled.h4`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
+
+  &:first-child {
+    margin-top: 0;
+  }
 `;
 
 export const ColumnBreak = styled.div`
