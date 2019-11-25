@@ -9,6 +9,8 @@
     "url": "https://github.com/HMUDesign/dungeons-and-components/issues"
   },
   "scripts": {
+    "eslint": "eslint .",
+    "depcheck": "depcheck --ignore-dirs=lib .",
     "clean": "rm -rf lib",
     "build": "npm run clean && NODE_ENV=production babel --source-maps --copy-files src --out-dir lib",
     "dev": "npm run clean && NODE_ENV=development babel --source-maps --copy-files src --out-dir lib  --watch",
@@ -18,10 +20,9 @@
   "module": "src/dnc.js",
   "peerDependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^16.12.0"
   },
-  "depedencies": {
+  "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "lodash": "^4.17.15"
@@ -29,10 +30,17 @@
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-emotion": "^10.0.23",
     "babel-preset-react-app": "^9.0.2",
+    "depcheck": "^0.9.1",
+    "eslint": "^6.7.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^16.12.0"
   }
 }

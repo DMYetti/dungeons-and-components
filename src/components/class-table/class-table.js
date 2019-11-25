@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import getOrdinal from '../../utils/get-ordinal';
-import Table from '../table';
+import Table from '../table/table';
 
 export default function ClassTable({ title, levels, ...props }) {
   const hasSpellcasting = levels.some(level => level.spellcasting);

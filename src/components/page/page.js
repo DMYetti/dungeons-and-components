@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Footer from './components/footer';
+import Footer from './components/footer/footer';
 
 import {
   Container,
