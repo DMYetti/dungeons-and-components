@@ -25,44 +25,46 @@ export const Container = styled.div`
   background-color: #EEE5CE;
   background-image: url(${background});
 
-  // These are for use of content, not other components
+  // These are for use of content, not internal components
 
-  p {
-    margin: 0.125in 0;
-    text-indent: 1em;
+  > {
+    p {
+      margin: 0.125in 0;
+      text-indent: 1em;
 
-    &:first-child {
-      margin-top: 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
-    &:last-child {
-      margin-bottom: 0;
+
+    h1 + p {
+      text-indent: 0;
     }
-  }
 
-  h1 + p {
-    text-indent: 0;
-  }
+    h1 + p:first-line {
+      font-size: 115%;
+      font-variant: small-caps;
+    }
 
-  h1 + p:first-line {
-    font-size: 115%;
-    font-variant: small-caps;
-  }
-
-  h1 + p:first-letter {
-    float: left;
-    font-family: Solberry;
-    font-size: 1.4in;
-    color: #222;
-    line-height: 0.8em;
-    font-variant: normal;
-  }
-
-  ul, ol {
-    padding-left: 0.25in;
-    margin: 0.125in 0;
+    h1 + p:first-letter {
+      float: left;
+      font-family: Solberry;
+      font-size: 1.4in;
+      color: #222;
+      line-height: 0.8em;
+      font-variant: normal;
+    }
 
     ul, ol {
-      margin: 0;
+      padding-left: 0.25in;
+      margin: 0.125in 0;
+
+      ul, ol {
+        margin: 0;
+      }
     }
   }
 

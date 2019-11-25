@@ -1,34 +1,37 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { withNoBreaks } from '../../utils/styled';
 
 export const Container = styled.div`
-  column-break-inside: avoid;
-  page-break-inside: avoid;
-  break-inside: avoid;
+  ${withNoBreaks}
 `;
 
 export const List = styled.ul`
   list-style: none;
-  padding-left: 0 !important;
+  padding-left: 0;
 
   ul {
-    margin-left: 10px !important;
+    margin-left: 0.125in;
   }
 `;
 
 export const ListItem = styled.li`
+  margin-bottom: 1px;
 `;
 
 export const Label = styled.div`
   ${({ level }) => level === 0 && css`
-    font-size: 0.529cm;
+    font-size: 0.25in;
+    color: #58180D;
     border-bottom: 2px solid #c9ad6a;
-    margin-bottom: 4px !important;
-    margin-top: 10px !important;
+    font-variant: small-caps;
+
+    margin-top: 0.125in;
+    margin-bottom: 0.0625in;
   `}
 
   ${({ level }) => level === 1 && css`
-    font-size: 0.458cm;
+    font-size: 0.15in;
   `}
 
   ${({ level }) => level > 0 && css`
@@ -52,9 +55,17 @@ export const Label = styled.div`
 
 export const PageNumber = styled.div`
   float: right;
-  font-family: BookSanity;
-  font-size: 0.317cm;
-  font-weight: normal;
-  color: black;
   margin-left: 1px;
+
+  ${({ level }) => level === 0 && css`
+    line-height: ${0.25 * 1.25}in;
+  `}
+
+  ${({ level }) => level === 1 && css`
+    line-height: ${0.15 * 1.25}in;
+  `}
+
+  ${({ level }) => level > 1 && css`
+    line-height: ${0.125 * 1.25}in;
+  `}
 `;

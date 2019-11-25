@@ -29,7 +29,7 @@ function Rows({ level, items }) {
         </ListItem>
       ) : (
         <ListItem key={index}>
-          <PageNumber level={level}>3</PageNumber>
+          <PageNumber level={level}>{level}</PageNumber>
           <Label level={level}>{item}</Label>
         </ListItem>
       )))}
