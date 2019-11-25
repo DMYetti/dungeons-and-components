@@ -77,10 +77,14 @@ export const Ability = styled.div`
   text-align: center;
 `;
 
-export const AbilityLabel = styled.strong`
+export const AbilityLabel = styled.div`
+  font-weight: bold;
 `;
 
 export const AbilityValue = styled.div`
+`;
+
+export const AbilityModifier = styled.div`
 `;
 
 export const Note = styled.p`

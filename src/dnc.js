@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Page, { Label, ColumnBreak } from './components/page';
-import Information from './components/information';
+import Page, { PageTitle, Heading1, Heading2, Heading3, ColumnBreak } from './components/page';
+import Description from './components/description';
 import Note from './components/note';
 import Table from './components/table';
 import ClassTable from './components/class-table';
@@ -14,8 +14,8 @@ import StatBlock from './components/stat-block';
 import { Globals, Container } from './dnc.styled';
 
 export {
-  Page, Label, ColumnBreak,
-  Information,
+  Page, PageTitle, Heading1, Heading2, Heading3, ColumnBreak,
+  Description,
   Note,
   Table,
   ClassTable,

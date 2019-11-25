@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import PHBPropTypes from '../../utils/prop-types';
+import DNCPropTypes from '../../utils/prop-types';
 
 import { getDiceAverage } from '../../utils/dice';
 import { getModifier } from '../../utils/stats';
@@ -18,6 +18,7 @@ import {
   Ability,
   AbilityLabel,
   AbilityValue,
+  AbilityModifier,
   Note,
   NoteLabel,
   NoteType,
@@ -59,27 +60,33 @@ export default function StatBlock({
       <Abilities>
         <Ability>
           <AbilityLabel>STR</AbilityLabel>
-          <AbilityValue>{abilities.strength} ({getModifier(abilities.strength)})</AbilityValue>
+          <AbilityValue>{abilities.strength}</AbilityValue>
+          <AbilityModifier>({getModifier(abilities.strength)})</AbilityModifier>
         </Ability>
         <Ability>
           <AbilityLabel>DEX</AbilityLabel>
-          <AbilityValue>{abilities.dexterity} ({getModifier(abilities.dexterity)})</AbilityValue>
+          <AbilityValue>{abilities.dexterity}</AbilityValue>
+          <AbilityModifier>({getModifier(abilities.dexterity)})</AbilityModifier>
         </Ability>
         <Ability>
           <AbilityLabel>CON</AbilityLabel>
-          <AbilityValue>{abilities.constitution} ({getModifier(abilities.constitution)})</AbilityValue>
+          <AbilityValue>{abilities.constitution}</AbilityValue>
+          <AbilityModifier>({getModifier(abilities.constitution)})</AbilityModifier>
         </Ability>
         <Ability>
           <AbilityLabel>INT</AbilityLabel>
-          <AbilityValue>{abilities.intelligence} ({getModifier(abilities.intelligence)})</AbilityValue>
+          <AbilityValue>{abilities.intelligence}</AbilityValue>
+          <AbilityModifier>({getModifier(abilities.intelligence)})</AbilityModifier>
         </Ability>
         <Ability>
           <AbilityLabel>WIS</AbilityLabel>
-          <AbilityValue>{abilities.wisdom} ({getModifier(abilities.wisdom)})</AbilityValue>
+          <AbilityValue>{abilities.wisdom}</AbilityValue>
+          <AbilityModifier>({getModifier(abilities.wisdom)})</AbilityModifier>
         </Ability>
         <Ability>
           <AbilityLabel>CHA</AbilityLabel>
-          <AbilityValue>{abilities.charisma} ({getModifier(abilities.charisma)})</AbilityValue>
+          <AbilityValue>{abilities.charisma}</AbilityValue>
+          <AbilityModifier>({getModifier(abilities.charisma)})</AbilityModifier>
         </Ability>
       </Abilities>
 
@@ -125,7 +132,7 @@ StatBlock.propTypes = {
   alignment: PropTypes.string.isRequired,
 
   armorclass: PropTypes.number.isRequired,
-  hitpoints: PHBPropTypes.die.isRequired,
+  hitpoints: DNCPropTypes.die.isRequired,
   speed: PropTypes.number.isRequired,
 
   abilities: PropTypes.shape({
@@ -158,15 +165,15 @@ StatBlock.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    hit: PropTypes.string.isRequired, // 5 or: '@char+1'
+    hit: PropTypes.number.isRequired,
     range: PropTypes.oneOfType([
-      PHBPropTypes.tuple([
+      DNCPropTypes.tuple([
         PropTypes.oneOf([
           'reach',
         ]).isRequired,
         PropTypes.number.isRequired,
       ]),
-      PHBPropTypes.tuple([
+      DNCPropTypes.tuple([
         PropTypes.oneOf([
           'range',
         ]).isRequired,
@@ -174,8 +181,8 @@ StatBlock.propTypes = {
         PropTypes.number.isRequired,
       ]),
     ]).isRequired,
-    damage: PHBPropTypes.tuple([
-      PHBPropTypes.die.isRequired,
+    damage: DNCPropTypes.tuple([
+      DNCPropTypes.die.isRequired,
       PropTypes.string,
     ]),
     description: PropTypes.string,

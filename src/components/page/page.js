@@ -3,9 +3,22 @@ import React from 'react';
 
 import Footer from './components/footer';
 
-import { Container, Label, ColumnBreak } from './page.styled';
+import {
+  Container,
+  PageTitle,
+  Heading1,
+  Heading2,
+  Heading3,
+  ColumnBreak,
+} from './page.styled';
 
-export { Label, ColumnBreak };
+export {
+  PageTitle,
+  Heading1,
+  Heading2,
+  Heading3,
+  ColumnBreak,
+};
 
 export default function Page({ footnote, number, children, ...props }) {
   return (

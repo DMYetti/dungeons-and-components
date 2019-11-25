@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import PHBPropTypes from '../../utils/prop-types';
+import DNCPropTypes from '../../utils/prop-types';
 
 import getOrdinal from '../../utils/get-ordinal';
 
@@ -72,7 +72,7 @@ Spell.propTypes = {
   school: PropTypes.string.isRequired,
   time: PropTypes.oneOfType([
     PropTypes.string,
-    PHBPropTypes.tuple([
+    DNCPropTypes.tuple([
       PropTypes.number.isRequired,
       PropTypes.oneOf([
         'action',
@@ -82,7 +82,7 @@ Spell.propTypes = {
   ]).isRequired,
   range: PropTypes.oneOfType([
     PropTypes.string,
-    PHBPropTypes.tuple([
+    DNCPropTypes.tuple([
       PropTypes.number.isRequired,
       PropTypes.oneOf([
         'feet',
@@ -99,7 +99,7 @@ Spell.propTypes = {
   }),
   duration: PropTypes.oneOfType([
     PropTypes.string,
-    PHBPropTypes.tuple([
+    DNCPropTypes.tuple([
       PropTypes.number.isRequired,
       PropTypes.oneOf([
         'rounds',
@@ -107,7 +107,7 @@ Spell.propTypes = {
         'hours',
       ]).isRequired,
     ]),
-    PHBPropTypes.tuple([
+    DNCPropTypes.tuple([
       PropTypes.oneOf([
         'concentration',
       ]).isRequired,

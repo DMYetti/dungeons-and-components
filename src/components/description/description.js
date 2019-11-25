@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Container } from './information.styled';
+import { Container } from './description.styled';
 
 export default function Informtion({ children, ...props }) {
   return (

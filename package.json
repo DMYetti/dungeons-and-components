@@ -9,7 +9,10 @@
     "url": "https://github.com/HMUDesign/dungeons-and-components/issues"
   },
   "scripts": {
-    "build": "rm -rf lib && cp -r src lib && NODE_ENV=production babel lib -d lib"
+    "clean": "rm -rf lib",
+    "build": "npm run clean && NODE_ENV=production babel --source-maps --copy-files src --out-dir lib",
+    "dev": "npm run clean && NODE_ENV=development babel --source-maps --copy-files src --out-dir lib  --watch",
+    "prepublish": "npm run build"
   },
   "main": "lib/dnc.js",
   "module": "src/dnc.js",
