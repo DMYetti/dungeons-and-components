@@ -6,13 +6,15 @@ import { Container, Title } from './note.styled';
 export default function Note({ title, children, ...props }) {
   return (
     <Container {...props}>
-      <Title>{title}</Title>
+      {title && (
+        <Title>{title}</Title>
+      )}
       {children}
     </Container>
   );
 }
 
 Note.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.node,
 };
