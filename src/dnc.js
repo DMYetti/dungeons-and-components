@@ -9,7 +9,6 @@ import ClassTable from './components/class-table/class-table';
 import TableOfContents from './components/table-of-contents/table-of-contents';
 import Spell from './components/spell/spell';
 import SpellList from './components/spell-list/spell-list';
-import StatBlock from './components/stat-block/stat-block';
 
 import { Globals, Container } from './dnc.styled';
 
@@ -22,7 +21,7 @@ export {
   TableOfContents,
   Spell,
   SpellList,
-  StatBlock,
+
 };
 
 export default function PHB({ children, ...props }) {
