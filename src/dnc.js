@@ -21,10 +21,9 @@ export {
   TableOfContents,
   Spell,
   SpellList,
-
 };
 
-export default function PHB({ children, ...props }) {
+export default function DNC({ children, ...props }) {
   return (
     <Container {...props}>
       <Globals />
@@ -33,6 +32,6 @@ export default function PHB({ children, ...props }) {
   );
 }
 
-PHB.propTypes = {
+DNC.propTypes = {
   children: PropTypes.node,
 };
