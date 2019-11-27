@@ -1,6 +1,6 @@
 {
   "presets": [
-    "react-app"
+    [ "react-app", { "absoluteRuntime": false } ]
   ],
   "plugins": [
     "@babel/plugin-proposal-optional-chaining",
