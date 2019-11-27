@@ -1,4 +1,9 @@
 {
-  "presets": ["react-app"],
-  "plugins": ["emotion"]
+  "presets": [
+    "react-app"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining",
+    "emotion"
+  ]
 }

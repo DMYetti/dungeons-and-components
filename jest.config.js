@@ -4,6 +4,7 @@ module.exports = {
     '/node_modules/',
     '/jest.*',
     '/utils-*',
+    '!*.stories.js',
   ],
   coverageDirectory: '_coverage',
   // coverageThreshold: {

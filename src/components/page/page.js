@@ -20,16 +20,19 @@ export {
   ColumnBreak,
 };
 
-export default function Page({ footnote, number, children, ...props }) {
+export default function Page({ story, footnote, number, children, ...props }) {
   return (
-    <Container {...props}>
+    <Container story={story} {...props}>
       {children}
-      <Footer footnote={footnote} number={number} />
+      {!story && (
+        <Footer footnote={footnote} number={number} />
+      )}
     </Container>
   );
 }
 
 Page.propTypes = {
+  story: PropTypes.oneOf([ 'half', 'full' ]),
   footnote: PropTypes.string,
   number: PropTypes.number,
   children: PropTypes.node,

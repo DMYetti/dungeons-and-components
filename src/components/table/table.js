@@ -26,8 +26,8 @@ export default function Table({ title, columns, data, footer, ...props }) {
       <BaseTable {...props}>
         <Header>
           <Row>
-            {columns.map(({ key, label, transform, ...props }, index) => (
-              <Heading key={label || index} {...props}>{label}</Heading>
+            {columns.map(({ key, label, transform, ...props }, colIndex) => (
+              <Heading key={label || colIndex} {...props}>{label}</Heading>
             ))}
           </Row>
         </Header>
@@ -54,7 +54,7 @@ export default function Table({ title, columns, data, footer, ...props }) {
                   const value = get(data, key);
 
                   return (
-                    <Footing key={label || colIndex} {...props}>{transform ? transform(value) : value}</Footing>
+                    <Footing key={label || colIndex} {...props}>{transform ? transform(value, rowIndex) : value}</Footing>
                   );
                 })}
               </Row>

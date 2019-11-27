@@ -11,6 +11,7 @@
   "scripts": {
     "eslint": "eslint .",
     "depcheck": "depcheck --ignore-dirs=lib .",
+    "storybook": "start-storybook -p 6006",
     "clean": "rm -rf lib",
     "test": "jest src",
     "build": "npm run clean && NODE_ENV=production babel --source-maps --copy-files src --out-dir lib",
@@ -35,9 +36,15 @@
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
     "@testing-library/react": "^9.3.2",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-emotion": "^10.0.23",
     "babel-preset-react-app": "^9.0.2",
     "chai": "^4.2.0",

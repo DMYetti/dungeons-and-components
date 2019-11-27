@@ -21,8 +21,8 @@ export default function Spell({
   school,
   time,
   range,
-  components,
   duration,
+  components,
   children,
   ...props
 }) {
@@ -46,9 +46,9 @@ export default function Spell({
           <Label>Components</Label>
           <Value>
             {[
-              components.verbal && 'V',
-              components.somatic && 'S',
-              components.material && 'M',
+              components.verbal && `V${typeof components.verbal === 'string' ? '*' : ''}`,
+              components.somatic && `S${typeof components.somatic === 'string' ? '*' : ''}`,
+              components.material && `M${typeof components.material === 'string' ? '*' : ''}`,
             ].filter(v => v).join(', ')}
           </Value>
         </Info>
@@ -89,14 +89,6 @@ Spell.propTypes = {
       ]).isRequired,
     ]),
   ]).isRequired,
-  components: PropTypes.shape({
-    verbal: PropTypes.bool,
-    somatic: PropTypes.bool,
-    material: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.string,
-    ]),
-  }),
   duration: PropTypes.oneOfType([
     PropTypes.string,
     DNCPropTypes.tuple([
@@ -114,5 +106,19 @@ Spell.propTypes = {
       PropTypes.string.isRequired,
     ]),
   ]).isRequired,
+  components: PropTypes.shape({
+    verbal: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+    somatic: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+    material: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.string,
+    ]),
+  }),
   children: PropTypes.node.isRequired,
 };

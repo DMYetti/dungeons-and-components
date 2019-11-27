@@ -5,13 +5,11 @@ import background from './assets/background.png';
 import { Container as Page } from '../../page.styled';
 
 export const Container = styled.div`
-  content: "";
   position: absolute;
-  bottom: 0px;
-  left: 0px;
-  z-index: 100;
-  height: 50px;
+  left: 0;
+  bottom: 0;
   width: 100%;
+  height: 0.5in;
   background-image: url(${background});
   background-size: cover;
 
@@ -22,13 +20,12 @@ export const Container = styled.div`
 
 export const Footnote = styled.div`
   position: absolute;
-  bottom: 32px;
-  z-index: 150;
-  width: 200px;
-  font-size: 0.8em;
+  bottom: 0.3in;
+  width: 2in;
+  font-size: 0.1in;
   color: #c9ad6a;
 
-  right: 80px;
+  right: 0.8in;
   text-align: right;
   ${Page}:nth-child(even) & {
     transform: scaleX(-1);
@@ -38,17 +35,17 @@ export const Footnote = styled.div`
 
 export const PageNumber = styled.div`
   position: absolute;
-  bottom: 22px;
-  width: 50px;
-  font-size: 0.9em;
-  color: #c9ad6a;
+  bottom: 0.2in;
+  width: 0.55in;
+  font-size: 0.125in;
   text-align: center;
+  color: #c9ad6a;
 
   &:empty:after {
     content: counter(dnc-page-numbers);
   }
 
-  right: 2px;
+  right: 0;
   ${Page}:nth-child(even) & {
     transform: scaleX(-1);
   }

@@ -37,6 +37,12 @@ rules:
   brace-style:
     - error
     - stroustrup
+  import/no-extraneous-dependencies:
+    - error
+    -
+      devDependencies:
+        - '**/*.test.js'
+        - '**/*.stories.js'
   import/no-unresolved:
     - error
     -
