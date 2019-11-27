@@ -27,7 +27,7 @@ export function Globals() {
 }
 
 export const Container = styled.div`
-  counter-reset: phb-page-numbers;
+  counter-reset: dnc-page-numbers;
 
   @media screen {
     background-color: #2C3E50;

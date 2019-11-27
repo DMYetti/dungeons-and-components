@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import background from './assets/background.jpg';
 
 export const Container = styled.div`
-  counter-increment: phb-page-numbers;
+  counter-increment: dnc-page-numbers;
   column-count: 2;
   column-fill: auto;
   column-gap: 0.5in;

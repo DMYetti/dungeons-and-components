@@ -45,7 +45,7 @@ export const PageNumber = styled.div`
   text-align: center;
 
   &:empty:after {
-    content: counter(phb-page-numbers);
+    content: counter(dnc-page-numbers);
   }
 
   right: 2px;
