@@ -8,11 +8,11 @@ import {
   Title,
   Level,
   LevelTitle,
-  SpellList,
-  SpellName,
+  Spells,
+  Spell,
 } from './spell-list.styled';
 
-export default function Spell({ title, spells, ...props }) {
+export default function SpellList({ title, spells, ...props }) {
   const levels = useMemo(() => getLevels(spells), [ spells ]);
 
   return (
@@ -23,18 +23,18 @@ export default function Spell({ title, spells, ...props }) {
       {levels.map(([ level, spells ]) => (
         <Level key={level}>
           <LevelTitle>{ level === 0 ? `Cantrips (${0} Level)` : `${getOrdinal(level)} Level`}</LevelTitle>
-          <SpellList>
+          <Spells>
             {spells.map(spell => (
-              <SpellName key={spell}>{spell}</SpellName>
+              <Spell key={spell}>{spell}</Spell>
             ))}
-          </SpellList>
+          </Spells>
         </Level>
       ))}
     </Container>
   );
 }
 
-Spell.propTypes = {
+SpellList.propTypes = {
   title: PropTypes.string,
   spells: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,

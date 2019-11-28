@@ -43,11 +43,11 @@ export const LevelTitle = styled.h3`
   }
 `;
 
-export const SpellList = styled.ul`
+export const Spells = styled.ul`
   list-style: none;
   padding-left: 0;
   margin-top: 0.0625in;
 `;
 
-export const SpellName = styled.li`
+export const Spell = styled.li`
 `;

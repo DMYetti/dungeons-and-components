@@ -3,7 +3,10 @@ import React from 'react';
 
 import { Container } from './description.styled';
 
-export default function Informtion({ children, ...props }) {
+/**
+ * Use `Description` to provide read-aloud text for your dungeon master.
+ */
+export default function Description({ children, ...props }) {
   return (
     <Container {...props}>
       {children}
@@ -11,6 +14,6 @@ export default function Informtion({ children, ...props }) {
   );
 }
 
-Informtion.propTypes = {
+Description.propTypes = {
   children: PropTypes.node,
 };
