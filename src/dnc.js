@@ -10,9 +10,12 @@ import TableOfContents from './components/table-of-contents/table-of-contents';
 import Spell from './components/spell/spell';
 import SpellList from './components/spell-list/spell-list';
 
+import { LinkProvider } from './components/link/link';
+
 import { Globals, Container } from './dnc.styled';
 
 export {
+  Container,
   Page, PageTitle, Heading1, Heading2, Heading3, ColumnBreak,
   Description,
   Note,
@@ -25,10 +28,12 @@ export {
 
 export default function DNC({ children, ...props }) {
   return (
-    <Container {...props}>
+    <LinkProvider>
       <Globals />
-      {children}
-    </Container>
+      <Container {...props}>
+        {children}
+      </Container>
+    </LinkProvider>
   );
 }
 

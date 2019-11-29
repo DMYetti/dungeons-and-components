@@ -4,6 +4,7 @@ parser: babel-eslint
 extends:
   - eslint-config-airbnb
 plugins:
+  - babel
   - react-hooks
 env:
   browser: true
@@ -30,6 +31,9 @@ rules:
   react/jsx-props-no-spreading: off
   react/require-default-props: off
   prefer-spread: off
+
+  no-unused-expressions: off
+  babel/no-unused-expressions: error
 
   array-bracket-spacing:
     - error
