@@ -31,7 +31,7 @@ export default function Page({ story, footer, footnote, number, children, ...pro
 
 Page.defaultProps = {
   footer: true,
-}
+};
 
 Page.propTypes = {
   story: PropTypes.oneOf([ 'half', 'full' ]),

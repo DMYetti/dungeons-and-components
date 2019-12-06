@@ -10,7 +10,7 @@
   },
   "scripts": {
     "eslint": "eslint .",
-    "depcheck": "depcheck --ignore-dirs=lib .",
+    "depcheck": "depcheck --ignore-dirs=lib --ignores=~,@storybook/addons,babel-*,*-babel .",
     "storybook": "start-storybook -p 6006",
     "clean": "rm -rf lib",
     "test": "jest src",
@@ -40,6 +40,7 @@
     "@storybook/addon-docs": "^5.2.6",
     "@storybook/addons": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "@storybook/theming": "^5.2.8",
     "@testing-library/react": "^9.3.2",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
