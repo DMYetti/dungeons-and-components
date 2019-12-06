@@ -9,6 +9,7 @@ import ClassTable from './components/class-table/class-table';
 import TableOfContents from './components/table-of-contents/table-of-contents';
 import Spell from './components/spell/spell';
 import SpellList from './components/spell-list/spell-list';
+import Image from './components/image/image';
 
 import { LinkProvider } from './components/link/link';
 
@@ -24,6 +25,7 @@ export {
   TableOfContents,
   Spell,
   SpellList,
+  Image,
 };
 
 export default function DNC({ children, ...props }) {

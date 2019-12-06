@@ -5,6 +5,8 @@ import background from './assets/background.png';
 import { Container as Page } from '../../page.styled';
 
 export const Container = styled.div`
+  counter-increment: dnc-page-numbers;
+
   position: absolute;
   left: 0;
   bottom: 0;

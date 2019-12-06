@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { withWide } from '../../utils/styled';
 
 import background from './assets/background.jpg';
 
 export const PageTitle = styled.h1`
-  column-span: all;
+  ${withWide({ wide: true })}
+
   font-size: 0.4in;
   line-height: 1;
   clear: both;
@@ -16,6 +18,8 @@ export const PageTitle = styled.h1`
 `;
 
 export const Heading1 = styled.h2`
+  ${withWide}
+
   font-size: 0.3in;
   line-height: 1;
   clear: both;
@@ -31,6 +35,8 @@ export const Heading1 = styled.h2`
 `;
 
 export const Heading2 = styled.h3`
+  ${withWide}
+
   font-size: 0.25in;
   line-height: 1;
   border-bottom: 2px solid #c9ad6a;
@@ -47,6 +53,8 @@ export const Heading2 = styled.h3`
 `;
 
 export const Heading3 = styled.h4`
+  ${withWide}
+
   font-size: 0.2in;
   line-height: 1;
   clear: both;
@@ -68,7 +76,6 @@ export const ColumnBreak = styled.div`
 `;
 
 export const Container = styled.div`
-  counter-increment: dnc-page-numbers;
   column-count: 2;
   column-fill: auto;
   column-gap: 0.5in;
