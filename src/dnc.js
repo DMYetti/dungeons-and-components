@@ -10,6 +10,8 @@ import TableOfContents from './components/table-of-contents/table-of-contents';
 import Spell from './components/spell/spell';
 import SpellList from './components/spell-list/spell-list';
 import Image from './components/image/image';
+import Cover from './components/cover/cover';
+import Legalese from './components/legalese/legalese';
 
 import { LinkProvider } from './components/link/link';
 
@@ -26,6 +28,8 @@ export {
   Spell,
   SpellList,
   Image,
+  Cover,
+  Legalese,
 };
 
 export default function DNC({ children, ...props }) {
