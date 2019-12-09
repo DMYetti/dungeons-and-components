@@ -11,10 +11,14 @@ export const PageTitle = styled.h1`
   line-height: 1;
   clear: both;
 
-  margin: 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
+
+  & + * {
+    margin-top: 0 !important;
+  }
 `;
 
 export const Heading1 = styled.h2`
@@ -85,7 +89,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   width: 8.5in;
   height: 11in;
-  padding: 0.5in 0.5in 0.75in;
+  padding: 0.5in;
 
   font-family: BookSanity;
   font-size: 0.125in;

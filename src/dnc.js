@@ -12,6 +12,7 @@ import SpellList from './components/spell-list/spell-list';
 import Image from './components/image/image';
 import Cover from './components/cover/cover';
 import Legalese from './components/legalese/legalese';
+import StatBlock from './components/stat-block/stat-block';
 
 import { LinkProvider } from './components/link/link';
 
@@ -30,6 +31,7 @@ export {
   Image,
   Cover,
   Legalese,
+  StatBlock,
 };
 
 export default function DNC({ children, ...props }) {

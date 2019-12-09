@@ -26,7 +26,7 @@ export const Label = styled.div`
     border-bottom: 2px solid #c9ad6a;
     font-variant: small-caps;
 
-    margin-top: 0.125in;
+    margin-top: 0.0625in;
     margin-bottom: 0.0625in;
   `}
 

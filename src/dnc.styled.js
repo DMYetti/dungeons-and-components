@@ -31,15 +31,15 @@ export const Container = styled.div`
 
   @media screen {
     background-color: #2C3E50;
-    padding: 30px 0;
+    padding: 0.25in 0;
 
     > ${Page} {
       margin-right: auto;
       margin-left: auto;
-      box-shadow: 1px 4px 14px #000;
+      box-shadow: 0 0.05in 0.125in #000;
     }
     > ${Page} + ${Page} {
-      margin-top: 30px;
+      margin-top: 0.25in;
     }
   }
 `;

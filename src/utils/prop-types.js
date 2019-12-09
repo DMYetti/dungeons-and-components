@@ -57,7 +57,19 @@ function dieChecker() {
   return PropTypes.string;
 }
 
+function sizeChecker() {
+  return PropTypes.oneOf([
+    'tiny',
+    'small',
+    'medium',
+    'large',
+    'huge',
+    'gargantuan',
+  ]);
+}
+
 export default {
   tuple: tupleTypeChecker,
   die: dieChecker(),
+  size: sizeChecker(),
 };
