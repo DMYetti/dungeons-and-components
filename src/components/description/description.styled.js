@@ -8,13 +8,10 @@ export const Container = styled.div`
 
   font-family: ScalySans;
   margin: 0.125in 0;
-  padding: 0 4px;
-  background-color: #faf7ea;
   border-style: solid;
-  border-width: 7px;
-  border-image: url(${border}) 12 stretch;
-  border-image-outset: 4px;
-  box-shadow: 0 0.0625in 0.125in #888;
+  border-width: 0.125in;
+  border-image: url(${border}) 24 fill stretch;
+  border-image-outset: 0.03125in;
   box-shadow: 0 0 0.0625in #faf7ea;
 
   > :first-child {
