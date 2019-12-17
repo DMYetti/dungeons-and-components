@@ -1,0 +1,28 @@
+{
+  "name": "dungeons-and-components-example-boilerplate",
+  "version": "0.1.0",
+  "description": "A Dungeons and Dragons 5e adventure, written with dungeons-and-components.",
+  "scripts": {
+    "eslint": "eslint .",
+    "depcheck": "depcheck .",
+    "test": "jest src",
+    "test:watch": "jest --no-coverage --watch src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -m 'Updates [ci skip]' -d public"
+  },
+  "dependencies": {
+    "dungeons-and-components": "^0.3.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet-async": "^1.0.4"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.3.2",
+    "chai": "^4.2.0",
+    "chai-dom": "^1.8.1",
+    "depcheck": "^0.9.0",
+    "gh-pages": "^2.1.1",
+    "jest": "^24.9.0"
+  }
+}
