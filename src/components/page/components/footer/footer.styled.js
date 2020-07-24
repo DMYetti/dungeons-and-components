@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import background from './assets/background.png';
 
-import { Container as Page } from '../../page.styled';
+import { BaseContainer as Page } from '../../page.styled';
 
 export const Container = styled.div`
   counter-increment: dnc-page-numbers;

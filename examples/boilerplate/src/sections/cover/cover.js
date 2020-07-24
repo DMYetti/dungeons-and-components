@@ -6,7 +6,7 @@ export default function Cover() {
   return (
     <BaseCover
       title="A Dungeons and Dragons 5e adventure"
-      subtitle="written with dungeons-and-components"
+      subtitle="typeset with\ndungeons-and-components"
       author="Christopher Baker"
     />
   );

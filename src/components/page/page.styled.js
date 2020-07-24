@@ -1,3 +1,4 @@
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { withWide } from '../../utils/styled';
@@ -79,7 +80,7 @@ export const ColumnBreak = styled.div`
   column-break-after: always;
 `;
 
-export const Container = styled.div`
+export const BaseContainer = styled.div`
   column-count: 2;
   column-fill: auto;
   column-gap: 0.5in;
@@ -175,4 +176,36 @@ export const Container = styled.div`
     font-size: smaller;
     line-height: 0;
   }
+
+  ${(props) => props.error && css`
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      pointer-events: none;
+      background: rgba(255, 0, 0, 25%);
+    }
+  `}
 `;
+
+export const Container = forwardRef((props, ref1) => {
+  const [ error, setError ] = useState(false);
+  const ref2 = useRef();
+
+  const ref = ref1 || ref2;
+  useEffect(() => {
+    const page = ref.current && ref.current;
+    if (page) {
+      const overflow = page.offsetWidth < page.scrollWidth || page.offsetHeight < page.scrollHeight;
+      setError(overflow);
+    }
+  }, [ ref ]);
+
+  return (
+    <BaseContainer {...props} ref={ref} error={error} />
+  );
+});

@@ -7,6 +7,14 @@ import { Container, Image, Content, Title, Subtitle, Author } from './cover.styl
  * Use `Cover` to provide a cover page.
  */
 export default function Cover({ title, subtitle, author, image, children, ...props }) {
+  subtitle = subtitle.split('\\n').map((line, index) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <React.Fragment key={`${line}-${index}`}>
+      {index > 0 && (<br />)}
+      {line}
+    </React.Fragment>
+  ));
+
   return (
     <Container {...props}>
       {image && (<Image {...image} />)}
