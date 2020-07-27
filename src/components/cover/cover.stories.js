@@ -11,6 +11,10 @@ export default {
 
 export function Basic() {
   return (
-    <Cover />
+    <Cover
+      title="Adventure Title"
+      subtitle="Subtitle about the adventure."
+      author="Author Name"
+    />
   );
 }
