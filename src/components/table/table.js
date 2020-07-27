@@ -15,7 +15,6 @@ import {
   Cell,
 } from './table.styled';
 
-
 export default function Table({ title, columns, data, footer, ...props }) {
   return (
     <Container {...props}>

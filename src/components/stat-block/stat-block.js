@@ -1,3 +1,9 @@
+/* eslint-disable react/no-unused-prop-types */
+/**
+ * 1. The rule does not see nested props extracted during a map.
+ * 2. There are several defined but not yet used props.
+ */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import { startCase } from 'lodash';
@@ -46,6 +52,7 @@ export function RawStatBlock({
   children,
   // ...props
 }) {
+  /* eslint-disable no-console */
   if (proficiencies) {
     console.warn('Property not yet supported: proficiencies');
   }
@@ -55,6 +62,7 @@ export function RawStatBlock({
   if (damages) {
     console.warn('Property not yet supported: damages');
   }
+  /* eslint-enable no-console */
 
   const hasProficiencies = false;
   const hasSenses = false;

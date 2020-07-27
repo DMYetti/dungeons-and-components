@@ -1,7 +1,7 @@
 import React from 'react';
 
 // eslint-disable-next-line import/no-named-as-default
-import Container, { Page } from './dnc';
+import Container, { Page } from '../dnc';
 
 export function withContainer(Child) {
   return (
