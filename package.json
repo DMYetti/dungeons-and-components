@@ -15,10 +15,10 @@
     "clean": "rm -rf lib",
     "build": "npm run clean && NODE_ENV=production babel --source-maps --copy-files src --out-dir lib",
     "dev": "npm run clean && NODE_ENV=development babel --source-maps --copy-files src --out-dir lib  --watch",
-    "release:pre": "npm version prerelease && npm publish --tag=pre",
-    "release:patch": "npm version patch && npm publish",
-    "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:patch": "npm version patch && npm publish",
+    "release:pre": "npm version prerelease && npm publish --tag=pre",
     "prepublish": "npm run build"
   },
   "main": "lib/dnc.js",
