@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Page,
@@ -7,7 +7,7 @@ import {
   Heading2,
   Description,
   Note,
-} from 'dungeons-and-components';
+} from 'dungeons-and-components'
 
 export default function Chapter1() {
   return (
@@ -40,5 +40,5 @@ export default function Chapter1() {
       <Description>This is a great place to include in-game descriptions.</Description>
       <p>What’s happening here? Who do the characters meet? Are there enemies lurking here? Treasure to find? Employ the “five senses” guide to flesh out these sections.</p>
     </Page>
-  );
+  )
 }

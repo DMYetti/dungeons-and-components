@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { withBreakable } from '../../utils/styled';
+import styled from '@emotion/styled'
+import { withBreakable } from '../../utils/styled'
 
 export const Container = styled.div`
   ${withBreakable}
@@ -11,10 +11,10 @@ export const Container = styled.div`
   > :last-child {
     margin-bottom: 0;
   }
-`;
+`
 
 export const Image = styled.img`
   display: block;
   width: 100%;
   margin-bottom: 0.125in;
-`;
+`

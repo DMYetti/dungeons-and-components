@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { Cover as BaseCover } from 'dungeons-and-components';
+import { Cover as BaseCover } from 'dungeons-and-components'
 
 export default function Cover() {
   return (
@@ -9,5 +9,5 @@ export default function Cover() {
       subtitle="typeset with\ndungeons-and-components"
       author="Christopher Baker"
     />
-  );
+  )
 }

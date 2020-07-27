@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { Container, Title } from './note.styled';
+import { Container, Title } from './note.styled'
 
 export default function Note({ title, children, ...props }) {
   return (
@@ -11,10 +11,10 @@ export default function Note({ title, children, ...props }) {
       )}
       {children}
     </Container>
-  );
+  )
 }
 
 Note.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
-};
+}

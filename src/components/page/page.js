@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { useLink } from '../link/link';
+import { useLink } from '../link/link'
 
-import Footer from './components/footer/footer';
+import Footer from './components/footer/footer'
 
 import {
   Container,
@@ -12,11 +12,11 @@ import {
   Heading2 as Heading2Base,
   Heading3 as Heading3Base,
   ColumnBreak,
-} from './page.styled';
+} from './page.styled'
 
 export {
   ColumnBreak,
-};
+}
 
 export default function Page({ story, footer, footnote, number, children, ...props }) {
   return (
@@ -26,12 +26,12 @@ export default function Page({ story, footer, footnote, number, children, ...pro
         <Footer footnote={footnote} number={number} />
       )}
     </Container>
-  );
+  )
 }
 
 Page.defaultProps = {
   footer: true,
-};
+}
 
 Page.propTypes = {
   story: PropTypes.oneOf([ 'half', 'full' ]),
@@ -39,57 +39,57 @@ Page.propTypes = {
   footnote: PropTypes.string,
   number: PropTypes.number,
   children: PropTypes.node,
-};
+}
 
 const titlePropTypes = {
   name: PropTypes.string,
   children: PropTypes.node.isRequired,
-};
+}
 
 export function PageTitle({ name, children, ...props }) {
-  const ref = useLink(name || children);
+  const ref = useLink(name || children)
 
   return (
     <PageTitleBase {...props} name={name} ref={ref}>
       {children}
     </PageTitleBase>
-  );
+  )
 }
 
-PageTitle.propTypes = { ...titlePropTypes };
+PageTitle.propTypes = { ...titlePropTypes }
 
 export function Heading1({ name, children, ...props }) {
-  const ref = useLink(name || children);
+  const ref = useLink(name || children)
 
   return (
     <Heading1Base {...props} name={name} ref={ref}>
       {children}
     </Heading1Base>
-  );
+  )
 }
 
-Heading1.propTypes = { ...titlePropTypes };
+Heading1.propTypes = { ...titlePropTypes }
 
 export function Heading2({ name, children, ...props }) {
-  const ref = useLink(name || children);
+  const ref = useLink(name || children)
 
   return (
     <Heading2Base {...props} name={name} ref={ref}>
       {children}
     </Heading2Base>
-  );
+  )
 }
 
-Heading2.propTypes = { ...titlePropTypes };
+Heading2.propTypes = { ...titlePropTypes }
 
 export function Heading3({ name, children, ...props }) {
-  const ref = useLink(name || children);
+  const ref = useLink(name || children)
 
   return (
     <Heading3Base {...props} name={name} ref={ref}>
       {children}
     </Heading3Base>
-  );
+  )
 }
 
-Heading3.propTypes = { ...titlePropTypes };
+Heading3.propTypes = { ...titlePropTypes }

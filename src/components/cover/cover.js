@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import { Container, Image, Content, Title, Subtitle, Author } from './cover.styled';
+import { Container, Image, Content, Title, Subtitle, Author } from './cover.styled'
 
 /**
  * Use `Cover` to provide a cover page.
@@ -13,7 +13,7 @@ export default function Cover({ title, subtitle, author, image, children, ...pro
       {index > 0 && (<br />)}
       {line}
     </React.Fragment>
-  ));
+  ))
 
   return (
     <Container {...props}>
@@ -25,7 +25,7 @@ export default function Cover({ title, subtitle, author, image, children, ...pro
         {children}
       </Content>
     </Container>
-  );
+  )
 }
 
 Cover.propTypes = {
@@ -37,4 +37,4 @@ Cover.propTypes = {
     alt: PropTypes.string.isRequired,
   }),
   children: PropTypes.node,
-};
+}

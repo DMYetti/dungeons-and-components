@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import getOrdinal from '../../utils/get-ordinal';
-import Table from '../table/table';
+import getOrdinal from '../../utils/get-ordinal'
+import Table from '../table/table'
 
 export default function ClassTable({ title, levels, preCols, postCols, ...props }) {
-  const hasCantrips = levels.some(level => level.spellcasting?.cantrips);
-  const hasSpellsKnown = levels.some(level => level.spellcasting?.spells);
+  const hasCantrips = levels.some(level => level.spellcasting?.cantrips)
+  const hasSpellsKnown = levels.some(level => level.spellcasting?.spells)
   const maxSpellLevel = Math.max(...levels
     .map(level => level.spellcasting?.slots?.length)
-    .filter(v => v));
+    .filter(v => v))
 
   return (
     <Table
@@ -51,7 +51,7 @@ export default function ClassTable({ title, levels, preCols, postCols, ...props 
         })),
       ]}
     />
-  );
+  )
 }
 
 ClassTable.propTypes = {
@@ -74,12 +74,12 @@ ClassTable.propTypes = {
     label: PropTypes.string.isRequired,
     transform: PropTypes.func,
   })),
-};
+}
 
 function orDash(value) {
-  return value || '—';
+  return value || '—'
 }
 
 function getProficiencyBonus(level) {
-  return Math.floor(level / 4) + 2;
+  return Math.floor(level / 4) + 2
 }

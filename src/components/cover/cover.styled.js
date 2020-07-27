@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import { Container as Page } from '../page/page.styled';
+import { Container as Page } from '../page/page.styled'
 
 export const Container = styled((props) => (<Page {...props} />))`
   columns: initial;
-`;
+`
 
 export const Image = styled.img`
   position: absolute;
@@ -14,12 +14,12 @@ export const Image = styled.img`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-`;
+`
 
 export const Content = styled.div`
   position: relative;
   z-index: 1;
-`;
+`
 
 export const Title = styled.h1`
   text-align: center;
@@ -29,7 +29,7 @@ export const Title = styled.h1`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
-`;
+`
 
 export const Subtitle = styled.div`
   text-align: center;
@@ -42,7 +42,7 @@ export const Subtitle = styled.div`
 
   width: 80%;
   margin: 0 auto;
-`;
+`
 
 export const Author = styled.div`
   text-align: center;
@@ -52,4 +52,4 @@ export const Author = styled.div`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
-`;
+`

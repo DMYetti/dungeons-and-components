@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { withWide } from '../../utils/styled';
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { withWide } from '../../utils/styled'
 
 export const Container = styled.div`
   column-gap: 0.25in;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   ${props => withWide(props, css`
     column-count: 4;
   `)}
-`;
+`
 
 export const Title = styled.h2`
   font-size: 0.25in;
@@ -24,10 +24,10 @@ export const Title = styled.h2`
   &:first-child {
     margin-top: 0;
   }
-`;
+`
 
 export const Level = styled.div`
-`;
+`
 
 export const LevelTitle = styled.h3`
   font-size: 0.2in;
@@ -41,13 +41,13 @@ export const LevelTitle = styled.h3`
   &:first-child {
     margin-top: 0;
   }
-`;
+`
 
 export const Spells = styled.ul`
   list-style: none;
   padding-left: 0;
   margin-top: 0.0625in;
-`;
+`
 
 export const Spell = styled.li`
-`;
+`

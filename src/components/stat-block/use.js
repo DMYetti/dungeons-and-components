@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import StatBlock from './stat-block';
+import StatBlock from './stat-block'
 
 export default function Landing() {
   return (
@@ -62,5 +62,5 @@ export default function Landing() {
         },
       ]}
     />
-  );
+  )
 }

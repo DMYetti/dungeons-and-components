@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
 export const Container = styled.div`
   margin: 0.125in 0;
-`;
+`
 
 export const Title = styled.h3`
   font-size: 0.2in;
@@ -12,20 +12,20 @@ export const Title = styled.h3`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180D;
-`;
+`
 
 export const Details = styled.div`
   font-style: italic;
-`;
+`
 
 export const InfoList = styled.ul`
   list-style: none;
   margin: 0.125in 0;
   padding: 0;
-`;
+`
 
 export const Info = styled.li`
-`;
+`
 
 export const Label = styled.span`
   font-weight: bold;
@@ -33,10 +33,10 @@ export const Label = styled.span`
   :after {
     content: ": ";
   }
-`;
+`
 
 export const Value = styled.span`
-`;
+`
 
 export const Description = styled.div`
-`;
+`

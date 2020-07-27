@@ -1,9 +1,9 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { withWide } from '../../utils/styled';
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { withWide } from '../../utils/styled'
 
-import background from './assets/background.jpg';
+import background from './assets/background.jpg'
 
 export const PageTitle = styled.h1`
   ${withWide({ wide: true })}
@@ -20,7 +20,7 @@ export const PageTitle = styled.h1`
   & + * {
     margin-top: 0 !important;
   }
-`;
+`
 
 export const Heading1 = styled.h2`
   ${withWide}
@@ -37,7 +37,7 @@ export const Heading1 = styled.h2`
   &:first-child {
     margin-top: 0;
   }
-`;
+`
 
 export const Heading2 = styled.h3`
   ${withWide}
@@ -55,7 +55,7 @@ export const Heading2 = styled.h3`
   &:first-child {
     margin-top: 0;
   }
-`;
+`
 
 export const Heading3 = styled.h4`
   ${withWide}
@@ -72,13 +72,13 @@ export const Heading3 = styled.h4`
   &:first-child {
     margin-top: 0;
   }
-`;
+`
 
 export const ColumnBreak = styled.div`
   visibility: hidden;
   break-after: always;
   column-break-after: always;
-`;
+`
 
 export const BaseContainer = styled.div`
   column-count: 2;
@@ -190,22 +190,22 @@ export const BaseContainer = styled.div`
       background: rgba(255, 0, 0, 25%);
     }
   `}
-`;
+`
 
 export const Container = forwardRef((props, ref1) => {
-  const [ error, setError ] = useState(false);
-  const ref2 = useRef();
+  const [ error, setError ] = useState(false)
+  const ref2 = useRef()
 
-  const ref = ref1 || ref2;
+  const ref = ref1 || ref2
   useEffect(() => {
-    const page = ref.current && ref.current;
+    const page = ref.current && ref.current
     if (page) {
-      const overflow = page.offsetWidth < page.scrollWidth || page.offsetHeight < page.scrollHeight;
-      setError(overflow);
+      const overflow = page.offsetWidth < page.scrollWidth || page.offsetHeight < page.scrollHeight
+      setError(overflow)
     }
-  }, [ ref ]);
+  }, [ ref ])
 
   return (
     <BaseContainer {...props} ref={ref} error={error} />
-  );
-});
+  )
+})

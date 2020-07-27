@@ -1,13 +1,13 @@
-import React from 'react';
-import { withHalfPage } from '~/utils-stories';
+import React from 'react'
+import { withHalfPage } from '~/utils-stories'
 
-import SpellList from './spell-list';
+import SpellList from './spell-list'
 
 export default {
   title: 'Components|SpellList',
   component: SpellList,
   decorators: [ withHalfPage ],
-};
+}
 
 export function Basic() {
   return (
@@ -40,5 +40,5 @@ export function Basic() {
         },
       ]}
     />
-  );
+  )
 }

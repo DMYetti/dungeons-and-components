@@ -2,7 +2,3 @@
 root: true
 extends:
   - '@hmudesign/eslint-config'
-rules:
-  semi:
-    - error
-    - always

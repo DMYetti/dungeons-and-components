@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { Global, css } from '@emotion/core';
+import React from 'react'
+import styled from '@emotion/styled'
+import { Global, css } from '@emotion/core'
 
-import fonts, { getFormat as getFontFormat } from './fonts';
-import { BaseContainer as Page } from './components/page/page.styled';
+import fonts, { getFormat as getFontFormat } from './fonts'
+import { BaseContainer as Page } from './components/page/page.styled'
 
 export const globalStyles = css`
   body {
@@ -18,12 +18,12 @@ export const globalStyles = css`
       font-style: ${italic ? 'italic' : 'normal'};
     }
   `).join(' ')).join(' ')}
-`;
+`
 
 export function Globals() {
   return (
     <Global styles={globalStyles} />
-  );
+  )
 }
 
 export const Container = styled.div`
@@ -42,4 +42,4 @@ export const Container = styled.div`
       margin-top: 0.25in;
     }
   }
-`;
+`

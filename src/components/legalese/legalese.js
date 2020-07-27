@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
 /**
  * Use `Legalese` to provide a cover page.
@@ -13,10 +13,10 @@ export default function Legalese({ year, name }) {
 
       <p>All other original material in this work is copyright {year} by {name} and published under the Community Content Agreement for Dungeon Masters Guild.</p>
     </>
-  );
+  )
 }
 
 Legalese.propTypes = {
   year: PropTypes.node.isRequired,
   name: PropTypes.node.isRequired,
-};
+}

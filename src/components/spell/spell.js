@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import DNCPropTypes from '../../utils/prop-types';
+import PropTypes from 'prop-types'
+import React from 'react'
+import DNCPropTypes from '../../utils/prop-types'
 
-import getOrdinal from '../../utils/get-ordinal';
+import getOrdinal from '../../utils/get-ordinal'
 
 import {
   Container,
@@ -13,7 +13,7 @@ import {
   Label,
   Value,
   Description,
-} from './spell.styled';
+} from './spell.styled'
 
 export default function Spell({
   title,
@@ -63,7 +63,7 @@ export default function Spell({
         {children}
       </Description>
     </Container>
-  );
+  )
 }
 
 Spell.propTypes = {
@@ -121,4 +121,4 @@ Spell.propTypes = {
     ]),
   }),
   children: PropTypes.node.isRequired,
-};
+}

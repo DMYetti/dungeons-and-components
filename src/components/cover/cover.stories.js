@@ -1,13 +1,13 @@
-import React from 'react';
-import { withContainer } from '~/utils-stories';
+import React from 'react'
+import { withContainer } from '~/utils-stories'
 
-import Cover from './cover';
+import Cover from './cover'
 
 export default {
   title: 'Components|Cover',
   component: Cover,
   decorators: [ withContainer ],
-};
+}
 
 export function Basic() {
   return (
@@ -16,5 +16,5 @@ export function Basic() {
       subtitle="Subtitle about the adventure."
       author="Author Name"
     />
-  );
+  )
 }

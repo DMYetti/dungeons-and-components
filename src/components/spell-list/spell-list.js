@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React, { useMemo } from 'react';
+import PropTypes from 'prop-types'
+import React, { useMemo } from 'react'
 
-import getOrdinal from '../../utils/get-ordinal';
+import getOrdinal from '../../utils/get-ordinal'
 
 import {
   Container,
@@ -10,10 +10,10 @@ import {
   LevelTitle,
   Spells,
   Spell,
-} from './spell-list.styled';
+} from './spell-list.styled'
 
 export default function SpellList({ title, spells, ...props }) {
-  const levels = useMemo(() => getLevels(spells), [ spells ]);
+  const levels = useMemo(() => getLevels(spells), [ spells ])
 
   return (
     <Container {...props}>
@@ -31,7 +31,7 @@ export default function SpellList({ title, spells, ...props }) {
         </Level>
       ))}
     </Container>
-  );
+  )
 }
 
 SpellList.propTypes = {
@@ -40,16 +40,16 @@ SpellList.propTypes = {
     title: PropTypes.string.isRequired,
     level: PropTypes.number.isRequired,
   })).isRequired,
-};
+}
 
 function getLevels(spells) {
-  const levels = new Map();
+  const levels = new Map()
   for (const { title, level } of spells) {
-    const spells = levels.get(level) || [];
-    spells.push(title);
-    levels.set(level, spells);
+    const spells = levels.get(level) || []
+    spells.push(title)
+    levels.set(level, spells)
   }
 
   return Array.from(levels.entries())
-    .map(([ level, spells ]) => [ level, spells.sort() ]);
+    .map(([ level, spells ]) => [ level, spells.sort() ])
 }

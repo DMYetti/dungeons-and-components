@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { withBreakable } from '../../utils/styled';
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { withBreakable } from '../../utils/styled'
 
 export const Container = styled.div`
   ${withBreakable}
-`;
+`
 
 export const List = styled.ul`
   list-style: none;
@@ -13,11 +13,11 @@ export const List = styled.ul`
   ul {
     margin-left: 0.125in;
   }
-`;
+`
 
 export const ListItem = styled.li`
   margin-bottom: 1px;
-`;
+`
 
 export const Label = styled.div`
   ${({ level }) => level === 0 && css`
@@ -51,7 +51,7 @@ export const Label = styled.div`
         ".........................................";
     }
   `}
-`;
+`
 
 export const PageNumber = styled.div`
   float: right;
@@ -68,4 +68,4 @@ export const PageNumber = styled.div`
   ${({ level }) => level > 1 && css`
     line-height: ${0.125 * 1.25}in;
   `}
-`;
+`

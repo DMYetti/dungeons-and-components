@@ -4,13 +4,13 @@
  * 2. There are several defined but not yet used props.
  */
 
-import PropTypes from 'prop-types';
-import React from 'react';
-import { startCase } from 'lodash';
-import DNCPropTypes from '../../utils/prop-types';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { startCase } from 'lodash'
+import DNCPropTypes from '../../utils/prop-types'
 
-import { getDiceAverage } from '../../utils/dice';
-import { getModifier } from '../../utils/stats';
+import { getDiceAverage } from '../../utils/dice'
+import { getModifier } from '../../utils/stats'
 
 import {
   Container,
@@ -28,7 +28,7 @@ import {
   Note,
   NoteLabel,
   NoteType,
-} from './stat-block.styled';
+} from './stat-block.styled'
 
 export function RawStatBlock({
   title,
@@ -54,25 +54,25 @@ export function RawStatBlock({
 }) {
   /* eslint-disable no-console */
   if (proficiencies) {
-    console.warn('Property not yet supported: proficiencies');
+    console.warn('Property not yet supported: proficiencies')
   }
   if (conditions) {
-    console.warn('Property not yet supported: conditions');
+    console.warn('Property not yet supported: conditions')
   }
   if (damages) {
-    console.warn('Property not yet supported: damages');
+    console.warn('Property not yet supported: damages')
   }
   /* eslint-enable no-console */
 
-  const hasProficiencies = false;
-  const hasSenses = false;
-  const hasLanguages = Array.isArray(languages) && languages.length > 0;
-  const hasChallenge = typeof challenge === 'number';
-  const hasProperties = Array.isArray(properties) && properties.length > 0;
-  const hasAbilities = abilities && Object.keys(abilities).length > 0;
-  const hasTraits = Array.isArray(traits) && traits.length > 0;
-  const hasActions = Array.isArray(actions) && actions.length > 0;
-  const hasChildren = typeof children !== 'undefined';
+  const hasProficiencies = false
+  const hasSenses = false
+  const hasLanguages = Array.isArray(languages) && languages.length > 0
+  const hasChallenge = typeof challenge === 'number'
+  const hasProperties = Array.isArray(properties) && properties.length > 0
+  const hasAbilities = abilities && Object.keys(abilities).length > 0
+  const hasTraits = Array.isArray(traits) && traits.length > 0
+  const hasActions = Array.isArray(actions) && actions.length > 0
+  const hasChildren = typeof children !== 'undefined'
 
   return (
     <Container>
@@ -210,7 +210,7 @@ export function RawStatBlock({
         </>
       )}
     </Container>
-  );
+  )
 }
 
 RawStatBlock.propTypes = {
@@ -283,7 +283,7 @@ RawStatBlock.propTypes = {
     ]),
     description: PropTypes.string,
   })),
-};
+}
 
 const templates = {
   commoner: {
@@ -302,16 +302,16 @@ const templates = {
       wisdom: 10,
     },
   },
-};
+}
 
 export default function StatBlockWithTemplate({ template, ...props }) {
-  const defaults = templates[template];
+  const defaults = templates[template]
 
   return (
     <RawStatBlock {...defaults} {...props} />
-  );
+  )
 }
 
 StatBlockWithTemplate.propTypes = {
   template: PropTypes.oneOf(Object.keys(templates)),
-};
+}

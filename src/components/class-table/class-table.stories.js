@@ -1,13 +1,13 @@
-import React from 'react';
-import { withFullPage } from '~/utils-stories';
+import React from 'react'
+import { withFullPage } from '~/utils-stories'
 
-import ClassTable from './class-table';
+import ClassTable from './class-table'
 
 export default {
   title: 'Components|ClassTable',
   component: ClassTable,
   decorators: [ withFullPage ],
-};
+}
 
 export function Basic() {
   return (
@@ -39,5 +39,5 @@ export function Basic() {
         { key: 'sorcery', label: 'Sorcery Points' },
       ]}
     />
-  );
+  )
 }

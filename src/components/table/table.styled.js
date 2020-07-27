@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
-import { withBreakable, withWide } from '../../utils/styled';
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
+import { withBreakable, withWide } from '../../utils/styled'
 
-import border from './assets/border.png';
+import border from './assets/border.png'
 
 export const Container = styled.div`
   ${withBreakable}
@@ -23,7 +23,7 @@ export const Container = styled.div`
     border-image-source: url(${border});
     border-image-width: 47px;
   `}
-`;
+`
 
 export const Title = styled.h2`
   font-size: 0.2in;
@@ -32,29 +32,29 @@ export const Title = styled.h2`
   margin: 0 0 0.0625in 0;
   font-family: MrJeeves;
   font-weight: bold;
-`;
+`
 
 export const Table = styled.table`
   font-family: ScalySans;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-`;
+`
 
 export const Header = styled.thead`
-`;
+`
 
 export const Body = styled.tbody`
-`;
+`
 
 export const Footer = styled.tfoot`
-`;
+`
 
 export const Row = styled.tr`
   ${Body} &:nth-child(odd) {
     background-color: #e0e5c1;
   }
-`;
+`
 
 export const Cell = styled.td`
   padding: 0.03125in;
@@ -65,22 +65,22 @@ export const Cell = styled.td`
     width: 1px;
     white-space: nowrap;
   `}
-`;
+`
 
 Cell.defaultProps = {
   align: 'left',
-};
+}
 
 export const Heading = styled(Cell.withComponent('th'))`
   font-weight: bold;
   vertical-align: bottom;
-`;
+`
 
-Heading.defaultProps = Cell.defaultProps;
+Heading.defaultProps = Cell.defaultProps
 
 export const Footing = styled(Cell.withComponent('th'))`
   font-weight: bold;
   vertical-align: top;
-`;
+`
 
-Footing.defaultProps = Cell.defaultProps;
+Footing.defaultProps = Cell.defaultProps

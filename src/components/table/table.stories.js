@@ -1,13 +1,13 @@
-import React from 'react';
-import { withHalfPage } from '~/utils-stories';
+import React from 'react'
+import { withHalfPage } from '~/utils-stories'
 
-import Table from './table';
+import Table from './table'
 
 export default {
   title: 'Components|Table',
   component: Table,
   decorators: [ withHalfPage ],
-};
+}
 
 export function Basic() {
   return (
@@ -34,5 +34,5 @@ export function Basic() {
         { value: 3 },
       ]}
     />
-  );
+  )
 }

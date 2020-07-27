@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { get } from 'lodash';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { get } from 'lodash'
 
 import {
   Container,
@@ -13,7 +13,7 @@ import {
   Footing,
   Row,
   Cell,
-} from './table.styled';
+} from './table.styled'
 
 export default function Table({ title, columns, data, footer, ...props }) {
   return (
@@ -35,11 +35,11 @@ export default function Table({ title, columns, data, footer, ...props }) {
           {data.map((data, rowIndex) => (
             <Row key={data.key || rowIndex}>
               {columns.map(({ key, label, transform, ...props }, colIndex) => {
-                const value = get(data, key);
+                const value = get(data, key)
 
                 return (
                   <Cell key={label || colIndex} {...props}>{transform ? transform(value, rowIndex) : value}</Cell>
-                );
+                )
               })}
             </Row>
           ))}
@@ -50,11 +50,11 @@ export default function Table({ title, columns, data, footer, ...props }) {
             {footer.map((data, rowIndex) => (
               <Row key={data.key || rowIndex}>
                 {columns.map(({ key, label, transform, ...props }, colIndex) => {
-                  const value = get(data, key);
+                  const value = get(data, key)
 
                   return (
                     <Footing key={label || colIndex} {...props}>{transform ? transform(value, rowIndex) : value}</Footing>
-                  );
+                  )
                 })}
               </Row>
             ))}
@@ -62,7 +62,7 @@ export default function Table({ title, columns, data, footer, ...props }) {
         )}
       </BaseTable>
     </Container>
-  );
+  )
 }
 
 Table.propTypes = {
@@ -78,4 +78,4 @@ Table.propTypes = {
   footer: PropTypes.arrayOf(PropTypes.shape({
     key: PropTypes.node.isRequired,
   })),
-};
+}

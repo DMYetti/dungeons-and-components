@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
-import background from './assets/background.png';
+import background from './assets/background.png'
 
-import { BaseContainer as Page } from '../../page.styled';
+import { BaseContainer as Page } from '../../page.styled'
 
 export const Container = styled.div`
   counter-increment: dnc-page-numbers;
@@ -18,7 +18,7 @@ export const Container = styled.div`
   ${Page}:nth-child(even) > & {
     transform: scaleX(-1);
   }
-`;
+`
 
 export const Footnote = styled.div`
   position: absolute;
@@ -33,7 +33,7 @@ export const Footnote = styled.div`
     transform: scaleX(-1);
     text-align: left;
   }
-`;
+`
 
 export const PageNumber = styled.div`
   position: absolute;
@@ -51,4 +51,4 @@ export const PageNumber = styled.div`
   ${Page}:nth-child(even) & {
     transform: scaleX(-1);
   }
-`;
+`
