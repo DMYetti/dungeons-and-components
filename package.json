@@ -19,7 +19,11 @@
     "release:minor": "npm version minor && git push && git push --tags && npm publish",
     "release:patch": "npm version patch && git push && git push --tags && npm publish",
     "release:pre": "npm version prerelease && git push && git push --tags && npm publish --tag=pre",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "@hmudesign/eslint-config"
   },
   "main": "lib/dnc.js",
   "peerDependencies": {
