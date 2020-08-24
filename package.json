@@ -15,6 +15,7 @@
     "clean": "rm -rf lib",
     "build": "npm run clean && NODE_ENV=production babel --source-maps --copy-files src --out-dir lib",
     "dev": "npm run clean && NODE_ENV=development babel --source-maps --copy-files src --out-dir lib  --watch",
+    "docs": "npm run build && build-storybook -o public && gh-pages -m 'Updates [ci skip]' -d public",
     "release:major": "npm version major && git push && git push --tags && npm publish",
     "release:minor": "npm version minor && git push && git push --tags && npm publish",
     "release:patch": "npm version patch && git push && git push --tags && npm publish",
@@ -49,6 +50,7 @@
     "babel-preset-react-app": "^9.0.2",
     "depcheck": "^1.0.0",
     "eslint": "^7.5.0",
+    "gh-pages": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
