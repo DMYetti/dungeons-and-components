@@ -3,7 +3,7 @@ import { withBreakable } from '../../utils/styled'
 
 import border from './assets/border.png'
 
-export const Container = styled.div`
+export const Container = styled.blockquote`
   ${withBreakable}
 
   font-family: ScalySans;
