@@ -1,0 +1,9 @@
+ignore-patterns:
+  - "~notes"
+  - /_coverage
+  - /lib
+  - /public
+ignores:
+  - "@types/*"
+  - "@storybook/*"
+  - "~"

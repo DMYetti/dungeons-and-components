@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 
 import getOrdinal from '../../utils/get-ordinal'
@@ -13,16 +12,16 @@ import {
 } from './spell-list.styled'
 
 export default function SpellList({ title, spells, ...props }) {
-  const levels = useMemo(() => getLevels(spells), [ spells ])
+  const levels = useMemo(() => getLevels(spells), [spells])
 
   return (
     <Container {...props}>
       {title && (
         <Title>{title}</Title>
       )}
-      {levels.map(([ level, spells ]) => (
+      {levels.map(([level, spells]) => (
         <Level key={level}>
-          <LevelTitle>{ level === 0 ? `Cantrips (${0} Level)` : `${getOrdinal(level)} Level`}</LevelTitle>
+          <LevelTitle>{level === 0 ? `Cantrips (${0} Level)` : `${getOrdinal(level)} Level`}</LevelTitle>
           <Spells>
             {spells.map(spell => (
               <Spell key={spell}>{spell}</Spell>
@@ -51,5 +50,5 @@ function getLevels(spells) {
   }
 
   return Array.from(levels.entries())
-    .map(([ level, spells ]) => [ level, spells.sort() ])
+    .map(([level, spells]) => [level, spells.sort()])
 }

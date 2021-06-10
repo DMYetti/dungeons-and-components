@@ -1,9 +1,9 @@
 # Build dirs
-/public
 /lib
+/public
 
 # Temp dirs
-/next-src
+~notes
 
 # Logs
 logs

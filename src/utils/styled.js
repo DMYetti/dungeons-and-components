@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export function withBreakable({ breakable = false }, extra = '') {
   if (breakable) {

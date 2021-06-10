@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Container, Footnote, PageNumber } from './footer.styled'

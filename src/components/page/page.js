@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
 import { useLink } from '../link/link'
@@ -34,7 +33,7 @@ Page.defaultProps = {
 }
 
 Page.propTypes = {
-  story: PropTypes.oneOf([ 'half', 'full' ]),
+  story: PropTypes.oneOf(['half', 'full']),
   footer: PropTypes.bool.isRequired,
   footnote: PropTypes.string,
   number: PropTypes.number,

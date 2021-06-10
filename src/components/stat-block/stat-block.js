@@ -4,7 +4,6 @@
  * 2. There are several defined but not yet used props.
  */
 
-import PropTypes from 'prop-types'
 import React from 'react'
 import { startCase } from 'lodash'
 import DNCPropTypes from '../../utils/prop-types'

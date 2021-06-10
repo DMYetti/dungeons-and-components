@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { withWide } from '../../utils/styled'
 
 import background from './assets/background.jpg'
@@ -193,7 +193,7 @@ export const BaseContainer = styled.div`
 `
 
 export const Container = forwardRef((props, ref1) => {
-  const [ error, setError ] = useState(false)
+  const [error, setError] = useState(false)
   const ref2 = useRef()
 
   const ref = ref1 || ref2
@@ -203,7 +203,7 @@ export const Container = forwardRef((props, ref1) => {
       const overflow = page.offsetWidth < page.scrollWidth || page.offsetHeight < page.scrollHeight
       setError(overflow)
     }
-  }, [ ref ])
+  }, [ref])
 
   return (
     <BaseContainer {...props} ref={ref} error={error} />

@@ -1,2 +1,6 @@
+~notes
 /lib
-/next-src
+/public
+
+# temporary
+*.js

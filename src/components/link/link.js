@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { createContext, useContext, useRef, useState } from 'react'
 
 import { Container } from './link.styled'
@@ -28,7 +27,7 @@ Link.propTypes = {
 }
 
 export function LinkProvider({ children }) {
-  const [ , forceUpdate ] = useState({})
+  const [, forceUpdate] = useState({})
   const links = useRef({})
   const timer = useRef()
 

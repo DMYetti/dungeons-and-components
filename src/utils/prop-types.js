@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 
 function tupleTypeChecker(typeCheckers) {
   function checkType(isRequired, props, propName, componentName, location, propFullName, ...rest) {
