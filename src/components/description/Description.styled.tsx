@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { withBreakable } from "../../shared/helpers/styled"
+import { withBreakable } from "../../helpers/styled"
 
 import border from "./assets/border.png"
 

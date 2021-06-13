@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
-import { withWide } from "../../shared/helpers/styled"
+import { withWide } from "../../helpers/styled"
 
 export const Container = styled.div<{
   wide?: boolean

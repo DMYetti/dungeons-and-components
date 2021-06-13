@@ -1,7 +1,3 @@
-~notes
+/_coverage
 /lib
 /public
-
-# temporary
-*.stories.js
-*.js

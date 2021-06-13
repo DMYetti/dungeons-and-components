@@ -1,12 +1,12 @@
-import type { DiceType } from "../../shared/helpers/dice"
+import type { DiceType } from "../../helpers/dice"
 
 import React from "react"
 import { merge, startCase } from "lodash"
 
 import Dice from "../Dice/Dice"
 
-import { signed } from "../../shared/helpers/numbers"
-import { getStatModifier } from "../../shared/helpers/stats"
+import { signed } from "../../helpers/numbers"
+import { getStatModifier } from "../../helpers/stats"
 
 import {
   Container,

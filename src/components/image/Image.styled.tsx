@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { withBreakable } from "../../shared/helpers/styled"
+import { withBreakable } from "../../helpers/styled"
 
 export const Container = styled.div<{
   breakable?: boolean

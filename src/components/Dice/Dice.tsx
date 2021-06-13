@@ -1,8 +1,8 @@
-import type { DiceType } from "../../shared/helpers/dice"
+import type { DiceType } from "../../helpers/dice"
 
 import React from "react"
 
-import { getDiceAverage } from "../../shared/helpers/dice"
+import { getDiceAverage } from "../../helpers/dice"
 
 import { Container } from "./Dice.styled"
 

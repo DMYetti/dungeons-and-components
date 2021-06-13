@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
-import { withWide } from "../../shared/helpers/styled"
+import { withWide } from "../../helpers/styled"
 
 import background from "./assets/background.jpg"
 

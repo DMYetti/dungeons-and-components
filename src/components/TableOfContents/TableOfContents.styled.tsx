@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
-import { withBreakable } from "../../shared/helpers/styled"
+import { withBreakable } from "../../helpers/styled"
 
 export const Container = styled.div<{
   breakable?: boolean

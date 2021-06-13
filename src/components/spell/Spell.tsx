@@ -1,6 +1,6 @@
 import React from "react"
 
-import { getOrdinal } from "../../shared/helpers/numbers"
+import { getOrdinal } from "../../helpers/numbers"
 
 import {
   Container,

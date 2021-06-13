@@ -2,7 +2,7 @@ import type { Column } from "../Table/Table"
 
 import React from "react"
 
-import { getOrdinal } from "../../shared/helpers/numbers"
+import { getOrdinal } from "../../helpers/numbers"
 import Table from "../Table/Table"
 
 export default function ClassTable({
