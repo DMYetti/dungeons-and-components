@@ -9,3 +9,11 @@ declare module "*.woff" {
 declare module "*.woff2" {
   export default string
 }
+
+declare module "*.jpg" {
+  export default string
+}
+
+declare module "*.png" {
+  export default string
+}

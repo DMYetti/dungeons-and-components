@@ -1,22 +1,22 @@
 /* Main Font */
-import BookSanityRegular from "./BookSanity-Regular.otf"
-import BookSanityBold from "./BookSanity-Bold.otf"
-import BookSanityItalic from "./BookSanity-Italic.otf"
-import BookSanityBoldItalic from "./BookSanity-Bold-Italic.otf"
+import BookSanityRegular from "./BookSanity/BookSanity-Regular.otf"
+import BookSanityBold from "./BookSanity/BookSanity-Bold.otf"
+import BookSanityItalic from "./BookSanity/BookSanity-Italic.otf"
+import BookSanityBoldItalic from "./BookSanity/BookSanity-Bold-Italic.otf"
 
 /* Headers */
-import MrJeeves from "./MrJeeves.woff"
-import MrJeeves2 from "./MrJeeves.woff2"
+import MrJeeves from "./MrJeeves/MrJeeves.woff"
+import MrJeeves2 from "./MrJeeves/MrJeeves.woff2"
 
 /* Notes and Tables */
-import ScalySans from "./ScalySans.woff"
-import ScalySans2 from "./ScalySans.woff2"
-import ScalySansSmallCaps from "./ScalySans-SmallCaps.woff"
-import ScalySansSmallCaps2 from "./ScalySans-SmallCaps.woff2"
+import ScalySans from "./ScalySans/ScalySans.woff"
+import ScalySans2 from "./ScalySans/ScalySans.woff2"
+import ScalySansSmallCaps from "./ScalySans/ScalySans-SmallCaps.woff"
+import ScalySansSmallCaps2 from "./ScalySans/ScalySans-SmallCaps.woff2"
 
 /* Fancy First Letter */
-import Solberry from "./Solberry.woff"
-import Solberry2 from "./Solberry.woff2"
+import Solberry from "./Solberry/Solberry.woff"
+import Solberry2 from "./Solberry/Solberry.woff2"
 
 const fonts: Record<
   string,

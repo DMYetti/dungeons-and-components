@@ -3,4 +3,5 @@
 /public
 
 # temporary
+*.stories.js
 *.js

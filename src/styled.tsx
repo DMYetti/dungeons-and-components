@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 import { Global, css } from "@emotion/react"
 
 import fonts, { getFormat as getFontFormat } from "./fonts"
-import { BaseContainer as Page } from "./components/page/page.styled"
+import { BaseContainer as Page } from "./components/Page/Page.styled"
 
 export const globalStyles = css`
   body {
