@@ -12,14 +12,16 @@ const Context = createContext<{
   register: () => undefined,
 })
 
+export interface LinkProps extends React.ComponentProps<typeof Container> {
+  name: string
+  children: React.ReactNode
+}
+
 export default function Link({
   name,
   children,
   ...props
-}: {
-  name: string
-  children: React.ReactNode
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: LinkProps): JSX.Element {
   const { links } = useContext(Context)
   const link = links[name]
 
@@ -36,11 +38,11 @@ export default function Link({
   )
 }
 
-export function LinkProvider({
-  children,
-}: {
+export interface LinkProviderProps {
   children: React.ReactNode
-}): JSX.Element {
+}
+
+export function LinkProvider({ children }: LinkProviderProps): JSX.Element {
   const [, forceUpdate] = useState({})
   const links = useRef<Record<string, LinkTarget>>({})
   const timer = useRef<NodeJS.Timeout>()

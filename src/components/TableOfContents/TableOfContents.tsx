@@ -36,13 +36,12 @@ export default function TableOfContents({
   )
 }
 
-function Rows({
-  level,
-  items: items_,
-}: {
+interface RowsProps {
   level: number
   items: ItemsInput
-}): JSX.Element {
+}
+
+function Rows({ level, items: items_ }: RowsProps): JSX.Element {
   const items = normalize(items_)
 
   return (

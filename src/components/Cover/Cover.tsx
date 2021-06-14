@@ -9,7 +9,8 @@ import {
   Author,
 } from "./Cover.styled"
 
-export interface CoverProps extends React.ComponentProps<typeof Container> {
+export interface CoverProps
+  extends Omit<React.ComponentProps<typeof Container>, "children"> {
   title?: string
   subtitle?: string
   author?: string

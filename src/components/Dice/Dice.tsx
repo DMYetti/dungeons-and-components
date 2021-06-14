@@ -6,13 +6,12 @@ import { getDiceAverage } from "../../helpers/dice"
 
 import { Container } from "./Dice.styled"
 
-export default function Dice({
-  value,
-  type,
-}: {
+export interface DiceProps extends React.ComponentProps<typeof Container> {
   value: DiceType
   type?: string
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}
+
+export default function Dice({ value, type }: DiceProps): JSX.Element {
   const average = getDiceAverage(value)
 
   return (

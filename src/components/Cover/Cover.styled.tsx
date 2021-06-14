@@ -1,11 +1,11 @@
+import type { PageProps } from "../Page/Page"
+
 import React from "react"
 import styled from "@emotion/styled"
 
 import { Container as Page } from "../Page/Page.styled"
 
-export const Container = styled((props: React.ComponentProps<typeof Page>) => (
-  <Page {...props} />
-))`
+export const Container = styled((props: PageProps) => <Page {...props} />)`
   columns: initial;
 `
 

@@ -1,4 +1,4 @@
-import type { Column } from "../Table/Table"
+import type { TableProps, Column } from "../Table/Table"
 
 import React from "react"
 
@@ -14,17 +14,17 @@ type Level<T> = {
   }
 } & T
 
-export interface ClassTableProps<T> extends React.ComponentProps<typeof Table> {
+export interface ClassTableProps<T> extends TableProps<Level<T>> {
   title: string
-  preCols?: Column[]
-  postCols?: Column[]
+  before?: Column[]
+  after?: Column[]
   levels: Array<Level<T>>
 }
 
 export default function ClassTable<T>({
   title,
-  preCols = [],
-  postCols = [],
+  before = [],
+  after = [],
   levels,
   ...props
 }: ClassTableProps<T>): JSX.Element {
@@ -36,24 +36,24 @@ export default function ClassTable<T>({
       .filter((v) => (typeof v === "number" ? true : false)) as number[]),
   )
 
-  const preData = preCols.map<Column>(
+  const beforeCols = before.map<Column>(
     ({ key, label, transform, ...props }) => ({
       key,
       label,
       align: "center",
-      transform: (...props) =>
-        (transform && transform(...props)) || orDash(null),
+      transform: (value, index) =>
+        orDash((transform && transform(value, index)) || value),
       ...props,
     }),
   )
 
-  const postData = postCols.map<Column>(
+  const afterCols = after.map<Column>(
     ({ key, label, transform, ...props }) => ({
       key,
       label,
       align: "center",
-      transform: (...props) =>
-        (transform && transform(...props)) || orDash(null),
+      transform: (value, index) =>
+        orDash((transform && transform(value, index)) || value),
       ...props,
     }),
   )
@@ -150,14 +150,14 @@ export default function ClassTable<T>({
           align: "center",
           transform: (__, index) => getProficiencyBonus(index),
         },
-        ...preData,
+        ...beforeCols,
         {
           key: "features",
           label: "Features",
           transform: (v) => (v ? v.join(", ") : orDash(v)),
         },
         ...spellData,
-        ...postData,
+        ...afterCols,
       ]}
     />
   )

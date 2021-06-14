@@ -1,7 +1,7 @@
 import type { Story, Meta } from "@storybook/react"
 
 import React from "react"
-import { withHalfPage, argTypes } from "../../helpers/stories"
+import { withHalfPage, argTypes, argOff } from "../../helpers/stories"
 
 import SpellList, { SpellListProps } from "./SpellList"
 
@@ -9,13 +9,15 @@ export default {
   title: "Components/SpellList",
   component: SpellList,
   decorators: [withHalfPage],
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    spells: argOff,
+  },
 } as Meta
 
 export const Basic: Story<SpellListProps> = (args) => (
   <SpellList
     {...args}
-    title="Sorcerer Spells"
     spells={[
       {
         title: "Prestidigitation",
@@ -44,3 +46,7 @@ export const Basic: Story<SpellListProps> = (args) => (
     ]}
   />
 )
+
+Basic.args = {
+  title: "Sorcerer Spells",
+}

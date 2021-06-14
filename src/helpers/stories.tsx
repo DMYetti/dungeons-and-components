@@ -30,15 +30,17 @@ export function withFullPage(Child: React.FunctionComponent): JSX.Element {
   )
 }
 
+export const argHidden = {
+  table: {
+    disable: true,
+  },
+}
+
+export const argOff = {
+  control: false,
+}
+
 export const argTypes = {
-  theme: {
-    table: {
-      disable: true,
-    },
-  },
-  as: {
-    table: {
-      disable: true,
-    },
-  },
+  theme: argHidden,
+  as: argHidden,
 }

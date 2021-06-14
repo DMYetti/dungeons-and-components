@@ -26,39 +26,11 @@ import {
   NoteType,
 } from "./StatBlock.styled"
 
-export function RawStatBlock({
-  title,
-  size,
-  type,
-  subtype,
-  alignment,
-  gender,
-  languages,
-  senses,
-
-  abilities,
-  armorClass,
-  hitPoints,
-  speed,
-  challenge,
-
-  savingThrows,
-  skills,
-  damageResistances,
-  damageImmunities,
-  damageVulnerabilities,
-  conditionImmunities,
-
-  properties,
-  traits,
-  actions,
-
-  children,
-  ...props
-}: {
+export interface RawStatBlockProps
+  extends React.ComponentProps<typeof Container> {
   title: string
-  size: string
-  type: string
+  size?: string
+  type?: string
   subtype?: string
   alignment?: string
   gender?: string
@@ -104,7 +76,38 @@ export function RawStatBlock({
   }>
 
   children?: React.ReactNode
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}
+
+export function RawStatBlock({
+  title,
+  size,
+  type,
+  subtype,
+  alignment,
+  gender,
+  languages,
+  senses,
+
+  abilities,
+  armorClass,
+  hitPoints,
+  speed,
+  challenge,
+
+  savingThrows,
+  skills,
+  damageResistances,
+  damageImmunities,
+  damageVulnerabilities,
+  conditionImmunities,
+
+  properties,
+  traits,
+  actions,
+
+  children,
+  ...props
+}: RawStatBlockProps): JSX.Element {
   const hasLanguages = hasValue(languages)
   const hasSenses = hasValue(senses)
   const hasAbilities = hasValue(abilities)
@@ -139,10 +142,10 @@ export function RawStatBlock({
         </Summary>
       )}
 
-      <HorizontalRule />
-
       {(armorClass || hitPoints || speed) && (
         <>
+          <HorizontalRule />
+
           <InfoList>
             {armorClass && (
               <InfoItem>
@@ -163,13 +166,13 @@ export function RawStatBlock({
               </InfoItem>
             )}
           </InfoList>
-
-          <HorizontalRule />
         </>
       )}
 
       {hasAbilities && (
         <>
+          <HorizontalRule />
+
           <Abilities>
             {abilities?.strength && (
               <Ability>
@@ -222,8 +225,6 @@ export function RawStatBlock({
               </Ability>
             )}
           </Abilities>
-
-          <HorizontalRule />
         </>
       )}
 
@@ -238,6 +239,8 @@ export function RawStatBlock({
         hasChallenge ||
         hasProperties) && (
         <>
+          <HorizontalRule />
+
           <InfoList>
             {hasSavingThrows && (
               <InfoItem>
@@ -320,13 +323,13 @@ export function RawStatBlock({
               </>
             )}
           </InfoList>
-
-          <HorizontalRule />
         </>
       )}
 
       {hasTraits && (
         <>
+          <HorizontalRule />
+
           {traits?.map(({ title, description }) => (
             <Note key={title}>
               <NoteLabel>{title}</NoteLabel>
@@ -338,6 +341,8 @@ export function RawStatBlock({
 
       {hasActions && (
         <>
+          <HorizontalRule />
+
           <Heading>Actions</Heading>
 
           {actions?.map(({ title, type, hit, range, damage, description }) => (
@@ -378,7 +383,7 @@ export function RawStatBlock({
 }
 
 const templates: {
-  [key: string]: Omit<React.ComponentProps<typeof RawStatBlock>, "title">
+  commoner: Omit<RawStatBlockProps, "title">
 } = {
   commoner: {
     size: "medium",
@@ -398,14 +403,16 @@ const templates: {
   },
 }
 
-export default function StatBlockWithTemplate({
+export interface StatBlockProps extends Partial<RawStatBlockProps> {
+  title: string
+  template?: keyof typeof templates
+}
+
+export default function StatBlock({
   template,
   ...props
-}: {
-  title: string
-  template: keyof typeof templates
-} & Partial<React.ComponentProps<typeof RawStatBlock>>): JSX.Element {
-  const defaults = templates[template]
+}: StatBlockProps): JSX.Element {
+  const defaults = (template && templates[template]) || {}
   const mergedProps = merge({}, defaults, props)
 
   return <RawStatBlock {...mergedProps} />

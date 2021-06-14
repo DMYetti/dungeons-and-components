@@ -1,7 +1,7 @@
 import type { Story, Meta } from "@storybook/react"
 
 import React from "react"
-import { withHalfPage, argTypes } from "../../helpers/stories"
+import { withHalfPage, argTypes, argOff } from "../../helpers/stories"
 
 import TableOfContents, { TableOfContentsProps } from "./TableOfContents"
 
@@ -9,7 +9,10 @@ export default {
   title: "Components/TableOfContents",
   component: TableOfContents,
   decorators: [withHalfPage],
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    items: argOff,
+  },
 } as Meta
 
 export const Basic: Story<TableOfContentsProps> = (args) => (

@@ -38,6 +38,8 @@ export default function Spell({
   time,
   range,
   duration,
+  // concentration, // TODO
+  // ritual, // TODO
   components,
   children,
   ...props

@@ -12,6 +12,9 @@ export default {
   argTypes,
 } as Meta
 
-export const Basic: Story<LegaleseProps> = (args) => (
-  <Legalese {...args} year="2021" name="DM Yetti" />
-)
+export const Basic: Story<LegaleseProps> = (args) => <Legalese {...args} />
+
+Basic.args = {
+  year: "2021",
+  name: "DM Yetti",
+}

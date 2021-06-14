@@ -1,7 +1,7 @@
 import type { Story, Meta } from "@storybook/react"
 
 import React from "react"
-import { withHalfPage, argTypes } from "../../helpers/stories"
+import { withHalfPage, argTypes, argOff } from "../../helpers/stories"
 
 import Spell, { SpellProps } from "./Spell"
 
@@ -9,15 +9,18 @@ export default {
   title: "Components/Spell",
   component: Spell,
   decorators: [withHalfPage],
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    time: argOff,
+    range: argOff,
+    duration: argOff,
+    components: argOff,
+  },
 } as Meta
 
 export const Basic: Story<SpellProps> = (args) => (
   <Spell
     {...args}
-    title="Magic Missile"
-    level={1}
-    school="Evocation"
     time={[1, "action"]}
     range={[120, "feet"]}
     duration="instantaneous"
@@ -39,3 +42,9 @@ export const Basic: Story<SpellProps> = (args) => (
     </p>
   </Spell>
 )
+
+Basic.args = {
+  title: "Magic Missile",
+  level: 1,
+  school: "Evocation",
+}

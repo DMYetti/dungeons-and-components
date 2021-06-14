@@ -1,7 +1,7 @@
 import type { Story, Meta } from "@storybook/react"
 
 import React from "react"
-import { withFullPage, argTypes } from "../../helpers/stories"
+import { withFullPage, argTypes, argOff } from "../../helpers/stories"
 
 import ClassTable, { ClassTableProps } from "./ClassTable"
 
@@ -9,7 +9,15 @@ export default {
   title: "Components/ClassTable",
   component: ClassTable,
   decorators: [withFullPage],
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    before: argOff,
+    after: argOff,
+    levels: argOff,
+    columns: argOff,
+    data: argOff,
+    footer: argOff,
+  },
 } as Meta
 
 interface Data {
@@ -19,8 +27,7 @@ interface Data {
 export const Basic: Story<ClassTableProps<Data>> = (args) => (
   <ClassTable<Data>
     {...args}
-    title="Sorcerer"
-    preCols={[{ key: "sorcery", label: "Sorcery Points" }]}
+    before={[{ key: "sorcery", label: "Sorcery Points" }]}
     levels={[
       {
         sorcery: 0,
@@ -143,3 +150,7 @@ export const Basic: Story<ClassTableProps<Data>> = (args) => (
     ]}
   />
 )
+
+Basic.args = {
+  title: "Sorcerer",
+}

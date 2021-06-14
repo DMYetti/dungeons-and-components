@@ -15,7 +15,6 @@ import {
 export { ColumnBreak } from "./Page.styled"
 
 export interface PageProps extends React.ComponentProps<typeof Container> {
-  story?: "half" | "full"
   footer?: boolean
   footnote?: string
   number?: number

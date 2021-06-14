@@ -3,21 +3,18 @@ import type { Story, Meta } from "@storybook/react"
 import React from "react"
 import { withHalfPage, argTypes } from "../../helpers/stories"
 
-import Note, { Props } from "./Note"
+import Dice, { DiceProps } from "./Dice"
 
 export default {
-  title: "Components/Note",
-  component: Note,
+  title: "Components/Dice",
+  component: Dice,
   decorators: [withHalfPage],
   argTypes,
 } as Meta
 
-export const Basic: Story<Props> = (args) => (
-  <Note {...args}>
-    <p>Do the thing!</p>
-  </Note>
-)
+export const Basic: Story<DiceProps> = (args) => <Dice {...args} />
 
 Basic.args = {
-  title: "Zhu Li",
+  value: "3d6+3",
+  type: "piercing",
 }

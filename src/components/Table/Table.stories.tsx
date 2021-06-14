@@ -1,7 +1,7 @@
 import type { Story, Meta } from "@storybook/react"
 
 import React from "react"
-import { withHalfPage, argTypes } from "../../helpers/stories"
+import { withHalfPage, argTypes, argOff } from "../../helpers/stories"
 
 import Table, { TableProps } from "./Table"
 
@@ -9,7 +9,12 @@ export default {
   title: "Components/Table",
   component: Table,
   decorators: [withHalfPage],
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    columns: argOff,
+    data: argOff,
+    footer: argOff,
+  },
 } as Meta
 
 interface Data {
@@ -19,7 +24,6 @@ interface Data {
 export const Basic: Story<TableProps<Data>> = (args) => (
   <Table<Data>
     {...args}
-    title="Roll a d6"
     columns={[
       {
         key: "d6",
@@ -42,3 +46,7 @@ export const Basic: Story<TableProps<Data>> = (args) => (
     ]}
   />
 )
+
+Basic.args = {
+  title: "Roll a d6",
+}

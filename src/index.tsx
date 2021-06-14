@@ -26,12 +26,15 @@ export { default as TableOfContents } from "./components/TableOfContents/TableOf
 
 export { Container } from "./styled"
 
+interface DungeonsAndComponentsProps
+  extends React.ComponentProps<typeof Container> {
+  children: React.ReactNode
+}
+
 export default function DungeonsAndComponents({
   children,
   ...props
-}: {
-  children: React.ReactNode
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: DungeonsAndComponentsProps): JSX.Element {
   return (
     <LinkProvider>
       <Globals />
