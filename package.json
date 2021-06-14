@@ -21,10 +21,7 @@
     "dev:typescript": "tsc --emitDeclarationOnly --watch",
     "dev:babel": "babel --copy-files --out-dir lib --extensions .ts,.tsx --watch src",
     "storybook": "start-storybook -p 6006",
-    "storybook:build": "npm run clean && build-storybook -o _storybook",
-    "release:major": "npm version major && git push && git push --tags",
-    "release:minor": "npm version minor && git push && git push --tags",
-    "release:patch": "npm version patch && git push && git push --tags"
+    "storybook:build": "npm run clean && build-storybook -o _storybook"
   },
   "eslintConfig": {
     "root": true,

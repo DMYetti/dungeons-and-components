@@ -1,6 +1,10 @@
-name: CI
+name: Publish
+inputs:
+  type:
+    description: "Version segment to increment"
+    required: true
 
-on: [push]
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -27,6 +31,25 @@ jobs:
 
       - name: Build Storybook
         run: npm run storybook:build
+
+      - name: Deploy Storybook
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          user_name: "Workflow: ${{ env.GITHUB_WORKFLOW }}[bot]"
+          user_email: "${{ env.GITHUB_WORKFLOW }}[bot]@workflow"
+          publish_dir: ./_storybook
+
+      - name: Increment Version
+        run: npm version ${{ env.INPUT_TYPE }}
+
+      - name: Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Increment Version
+        run: git push && git push --tags
 
       - name: Notify Slack for Failures
         if: failure()
