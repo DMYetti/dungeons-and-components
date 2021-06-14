@@ -1,0 +1,11 @@
+ignore-patterns:
+  - /_coverage
+  - /_storybook
+  - /lib
+ignores:
+  - "@babel/*"
+  - "@emotion/*"
+  - "@storybook/*"
+  - "@types/*"
+  - babel-*
+  - webpack-*

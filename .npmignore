@@ -1,4 +1,5 @@
 /examples
 /_coverage
 /_storybook
-/lib
+/src
+/tsconfig.json

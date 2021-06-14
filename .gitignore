@@ -1,17 +1,15 @@
-# Build dirs
-/public
+# Output dirs
+/_coverage
+/_storybook
 /lib
 
 # Temp dirs
-/next-src
+~notes
 
 # Logs
 logs
 *.log
 npm-debug.log*
-
-# Coverage directories
-_coverage
 
 # Dependency directories
 node_modules/
