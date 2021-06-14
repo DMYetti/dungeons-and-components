@@ -7,7 +7,6 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "outDir": "./lib",
     "declaration": true,
-    "emitDeclarationOnly": true,
 
     "strict": true,
     "allowJs": true,
