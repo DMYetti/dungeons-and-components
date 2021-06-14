@@ -1,15 +1,14 @@
 import React from "react"
 
+export interface LegaleseProps {
+  year: string
+  name: string
+}
+
 /**
  * Use `Legalese` to provide a cover page.
  */
-export default function Legalese({
-  year,
-  name,
-}: {
-  year: string
-  name: string
-}): JSX.Element {
+export default function Legalese({ year, name }: LegaleseProps): JSX.Element {
   return (
     <>
       <p>

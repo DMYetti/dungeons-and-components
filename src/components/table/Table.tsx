@@ -18,27 +18,22 @@ export interface Column extends React.ComponentProps<typeof Cell> {
   key: string
   label?: string
   transform?: (value: any, index: number) => any
-  // Heading/Cell/Footing props
 }
 
-export interface Data {
-  key?: string
-  [key: string]: any
-  // data/footer values
+export interface TableProps<T> extends React.ComponentProps<typeof Container> {
+  title?: string
+  columns: Column[]
+  data: Array<T>
+  footer?: Array<T>
 }
 
-export default function Table({
+export default function Table<T>({
   title,
   columns,
   data,
   footer,
   ...props
-}: {
-  title?: string
-  columns: Column[]
-  data: Data[]
-  footer?: Data[]
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: TableProps<T>): JSX.Element {
   return (
     <Container {...props}>
       {title && <Title>{title}</Title>}
@@ -56,7 +51,7 @@ export default function Table({
 
         <Body>
           {data.map((data, rowIndex) => (
-            <Row key={data.key || rowIndex}>
+            <Row key={((data as unknown) as { key: string }).key || rowIndex}>
               {columns.map(({ key, label, transform, ...props }, colIndex) => {
                 const value = get(data, key)
 
@@ -73,7 +68,7 @@ export default function Table({
         {footer && (
           <Footer>
             {footer.map((data, rowIndex) => (
-              <Row key={data.key || rowIndex}>
+              <Row key={((data as unknown) as { key: string }).key || rowIndex}>
                 {columns.map(
                   ({ key, label, transform, ...props }, colIndex) => {
                     const value = get(data, key)

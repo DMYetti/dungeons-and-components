@@ -29,3 +29,16 @@ export function withFullPage(Child: React.FunctionComponent): JSX.Element {
     </Container>
   )
 }
+
+export const argTypes = {
+  theme: {
+    table: {
+      disable: true,
+    },
+  },
+  as: {
+    table: {
+      disable: true,
+    },
+  },
+}

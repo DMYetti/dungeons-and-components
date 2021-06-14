@@ -83,7 +83,12 @@ export const Heading3 = styled.h4<{
 export const ColumnBreak = styled.div`
   visibility: hidden;
   break-after: always;
-  column-break-after: always;
+  -webkit-column-break-after: always;
+  -moz-column-break-after: always;
+
+  & + * {
+    margin-top: 0 !important;
+  }
 `
 
 export const BaseContainer = styled.div<{

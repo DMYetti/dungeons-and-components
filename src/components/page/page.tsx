@@ -10,10 +10,17 @@ import {
   Heading1 as Heading1Base,
   Heading2 as Heading2Base,
   Heading3 as Heading3Base,
-  ColumnBreak,
 } from "./Page.styled"
 
-export { ColumnBreak }
+export { ColumnBreak } from "./Page.styled"
+
+export interface PageProps extends React.ComponentProps<typeof Container> {
+  story?: "half" | "full"
+  footer?: boolean
+  footnote?: string
+  number?: number
+  children: React.ReactNode
+}
 
 export default function Page({
   story,
@@ -22,13 +29,7 @@ export default function Page({
   number,
   children,
   ...props
-}: {
-  story?: "half" | "full"
-  footer?: boolean
-  footnote?: string
-  number?: number
-  children?: React.ReactNode
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: PageProps): JSX.Element {
   return (
     <Container story={story} {...props}>
       {children}

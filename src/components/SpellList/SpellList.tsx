@@ -16,14 +16,16 @@ interface Spell {
   level: number
 }
 
+export interface SpellListProps extends React.ComponentProps<typeof Container> {
+  title?: string
+  spells: Spell[]
+}
+
 export default function SpellList({
   title,
   spells,
   ...props
-}: {
-  title?: string
-  spells: Spell[]
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: SpellListProps): JSX.Element {
   const levels = useMemo(() => getLevels(spells), [spells])
 
   return (

@@ -14,17 +14,7 @@ import {
   Note,
 } from "./Spell.styled"
 
-export default function Spell({
-  title,
-  level,
-  school,
-  time,
-  range,
-  duration,
-  components,
-  children,
-  ...props
-}: {
+export interface SpellProps extends React.ComponentProps<typeof Container> {
   title: string
   level: number
   school: string
@@ -39,7 +29,19 @@ export default function Spell({
     material?: string
   }
   children: React.ReactNode
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}
+
+export default function Spell({
+  title,
+  level,
+  school,
+  time,
+  range,
+  duration,
+  components,
+  children,
+  ...props
+}: SpellProps): JSX.Element {
   return (
     <Container {...props}>
       <Title>{title}</Title>

@@ -13,18 +13,22 @@ import {
 interface Item {
   label: string
   name: string
+  page?: number
 }
 
 type Items = Array<Item | Items>
 
 type ItemsInput = Array<string | Item | ItemsInput>
 
+export interface TableOfContentsProps
+  extends React.ComponentProps<typeof Container> {
+  items: ItemsInput
+}
+
 export default function TableOfContents({
   items,
   ...props
-}: {
-  items: ItemsInput
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: TableOfContentsProps): JSX.Element {
   return (
     <Container {...props}>
       <Rows level={0} items={items} />
@@ -50,7 +54,7 @@ function Rows({
           </ListItem>
         ) : (
           <ListItem key={index}>
-            <PageNumber level={level}>0</PageNumber>
+            <PageNumber level={level}>{item.page}</PageNumber>
             <Label as={Link} level={level} title={item.name}>
               {item.label}
             </Label>

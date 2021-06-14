@@ -5,25 +5,29 @@ import React from "react"
 import { getOrdinal } from "../../helpers/numbers"
 import Table from "../Table/Table"
 
-export default function ClassTable({
-  title,
-  levels,
-  preCols = [],
-  postCols = [],
-  ...props
-}: {
+type Level<T> = {
+  features?: string[]
+  spellcasting?: {
+    cantrips?: number
+    spells?: number
+    slots?: number[]
+  }
+} & T
+
+export interface ClassTableProps<T> extends React.ComponentProps<typeof Table> {
   title: string
-  levels: Array<{
-    features?: string[]
-    spellcasting?: {
-      cantrips?: number
-      spells?: number
-      slots?: number[]
-    }
-  }>
   preCols?: Column[]
   postCols?: Column[]
-} & React.ComponentProps<typeof Table>): JSX.Element {
+  levels: Array<Level<T>>
+}
+
+export default function ClassTable<T>({
+  title,
+  preCols = [],
+  postCols = [],
+  levels,
+  ...props
+}: ClassTableProps<T>): JSX.Element {
   const hasCantrips = levels.some((level) => level.spellcasting?.cantrips)
   const hasSpellsKnown = levels.some((level) => level.spellcasting?.spells)
   const maxSpellLevel = Math.max(

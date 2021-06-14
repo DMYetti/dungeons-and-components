@@ -9,6 +9,17 @@ import {
   Author,
 } from "./Cover.styled"
 
+export interface CoverProps extends React.ComponentProps<typeof Container> {
+  title?: string
+  subtitle?: string
+  author?: string
+  image?: {
+    src: string
+    alt: string
+  }
+  children?: React.ReactNode
+}
+
 /**
  * Use `Cover` to provide a cover page.
  */
@@ -19,16 +30,7 @@ export default function Cover({
   image,
   children,
   ...props
-}: {
-  title?: string
-  subtitle?: string
-  author?: string
-  image?: {
-    src: string
-    alt: string
-  }
-  children: React.ReactNode
-} & React.ComponentProps<typeof Container>): JSX.Element {
+}: CoverProps): JSX.Element {
   return (
     <Container {...props}>
       {image && <Image {...image} />}
