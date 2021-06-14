@@ -14,10 +14,13 @@
     "depcheck": "depcheck .",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf _coverage _storybook lib",
-    "copyfiles": "copyfiles --up 1 --exclude 'src/*.ts' --exclude 'src/*.tsx' --exclude 'src/**/*.ts' --exclude 'src/**/*.tsx' 'src/*.*' 'src/**/*.*' lib",
-    "build": "npm run clean && npm run copyfiles && tsc",
+    "build": "npm run clean && npm run build:typescript && npm run build:babel && npm run build:storybook",
+    "build:typescript": "tsc",
+    "build:babel": "babel --copy-files --out-dir lib --extensions .ts,.tsx src",
     "build:storybook": "build-storybook -o _storybook",
-    "dev": "npm run clean && npm run copyfiles && tsc  --watch",
+    "dev": "npm run clean && (npm run dev:typescript & npm run dev:babel)",
+    "dev:typescript": "tsc --watch",
+    "dev:babel": "babel --copy-files --out-dir lib --extensions .ts,.tsx --watch src",
     "dev:storybook": "start-storybook -p 6006",
     "release:major": "npm version major && git push && git push --tags && npm publish",
     "release:minor": "npm version minor && git push && git push --tags && npm publish",
@@ -54,7 +57,10 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
     "@emotion/babel-plugin": "^11.3.0",
     "@hmudesign/eslint-config": "^1.7.0",
     "@storybook/addon-actions": "^6.2.9",
@@ -68,11 +74,11 @@
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
     "babel-loader": "^8.2.2",
-    "copyfiles": "^2.4.1",
     "depcheck": "^1.4.1",
     "eslint": "^7.28.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.2",
+    "webpack-merge": "^5.8.0"
   }
 }

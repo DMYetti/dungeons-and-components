@@ -7,6 +7,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "outDir": "./lib",
     "declaration": true,
+    "emitDeclarationOnly": true,
 
     "strict": true,
     "allowJs": true,
@@ -20,5 +21,5 @@
     "skipLibCheck": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["_storybook/**/*", "lib/**/*", "**/*.stories.tsx"]
+  "exclude": ["_storybook/**", "lib/**", "**/*.stories.tsx"]
 }

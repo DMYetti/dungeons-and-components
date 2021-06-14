@@ -1,0 +1,5 @@
+{
+  "presets": ["@babel/preset-typescript", "@babel/preset-react"],
+  "plugins": ["@emotion"],
+  "sourceMaps": true
+}
