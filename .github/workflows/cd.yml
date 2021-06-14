@@ -41,15 +41,22 @@ jobs:
           publish_dir: ./_storybook
 
       - name: Increment Version
-        run: npm version ${{ env.INPUT_TYPE }}
+        run: |
+          git config --local user.email "Workflow: ${{ env.GITHUB_WORKFLOW }}[bot]"
+          git config --local user.name "${{ env.GITHUB_WORKFLOW }}[bot]@workflow"
+          npm version ${{ env.INPUT_TYPE }}
 
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
-      - name: Increment Version
-        run: git push && git push --tags
+      - name: Push Tag
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          tags: true
 
       - name: Notify Slack for Failures
         if: failure()
