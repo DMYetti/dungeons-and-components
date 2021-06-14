@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --local user.email "Workflow: ${{ env.GITHUB_WORKFLOW }}[bot]"
           git config --local user.name "${{ env.GITHUB_WORKFLOW }}[bot]@workflow"
-          npm version ${{ env.INPUT_TYPE }}
+          npm version ${{ github.event.inputs.type }}
 
       - name: Publish
         uses: JS-DevTools/npm-publish@v1
