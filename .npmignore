@@ -1,5 +1,5 @@
 /examples
 /_coverage
-/public
+/_storybook
 /src
 /tsconfig.json

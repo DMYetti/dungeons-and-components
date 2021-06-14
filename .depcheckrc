@@ -1,7 +1,7 @@
 ignore-patterns:
   - /_coverage
+  - /_storybook
   - /lib
-  - /public
 ignores:
   - "@types/*"
   - "@storybook/*"

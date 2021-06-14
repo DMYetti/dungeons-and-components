@@ -20,5 +20,5 @@
     "skipLibCheck": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules/**/*", "lib/**/*"]
+  "exclude": ["_storybook/**/*", "lib/**/*", "**/*.stories.tsx"]
 }

@@ -1,7 +1,7 @@
 # Output dirs
 /_coverage
+/_storybook
 /lib
-/public
 
 # Temp dirs
 ~notes

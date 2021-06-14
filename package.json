@@ -13,10 +13,12 @@
     "eslint": "eslint .",
     "depcheck": "depcheck .",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf lib",
+    "clean": "rm -rf _coverage _storybook lib",
     "copyfiles": "copyfiles --up 1 --exclude 'src/*.ts' --exclude 'src/*.tsx' --exclude 'src/**/*.ts' --exclude 'src/**/*.tsx' 'src/*.*' 'src/**/*.*' lib",
     "build": "npm run clean && npm run copyfiles && tsc",
+    "build:storybook": "build-storybook -o _storybook",
     "dev": "npm run clean && npm run copyfiles && tsc  --watch",
+    "dev:storybook": "start-storybook -p 6006",
     "release:major": "npm version major && git push && git push --tags && npm publish",
     "release:minor": "npm version minor && git push && git push --tags && npm publish",
     "release:patch": "npm version patch && git push && git push --tags && npm publish",
@@ -52,16 +54,25 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.5",
+    "@emotion/babel-plugin": "^11.3.0",
     "@hmudesign/eslint-config": "^1.7.0",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addons": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@storybook/theming": "^6.2.9",
     "@types/lodash": "^4.14.170",
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "babel-loader": "^8.2.2",
     "copyfiles": "^2.4.1",
     "depcheck": "^1.4.1",
     "eslint": "^7.28.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.3.2"
+    "typescript": "^4.2.2"
   }
 }
