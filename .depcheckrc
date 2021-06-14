@@ -3,5 +3,9 @@ ignore-patterns:
   - /_storybook
   - /lib
 ignores:
-  - "@types/*"
+  - "@babel/*"
+  - "@emotion/*"
   - "@storybook/*"
+  - "@types/*"
+  - babel-*
+  - webpack-*
