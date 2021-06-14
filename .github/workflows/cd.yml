@@ -1,10 +1,11 @@
 name: Publish
-inputs:
-  type:
-    description: "Version segment to increment"
-    required: true
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: "Version segment to increment"
+        required: true
 
 jobs:
   build:
