@@ -43,4 +43,5 @@ export const argOff = {
 export const argTypes = {
   theme: argHidden,
   as: argHidden,
+  breakable: argOff,
 }

@@ -34,6 +34,7 @@ export interface RawStatBlockProps
   subtype?: string
   alignment?: string
   gender?: string
+  pronouns?: string
   languages?: string[]
   senses?: string[]
 
@@ -85,6 +86,7 @@ export function RawStatBlock({
   subtype,
   alignment,
   gender,
+  pronouns,
   languages,
   senses,
 
@@ -127,7 +129,9 @@ export function RawStatBlock({
 
   return (
     <Container {...props}>
-      <Title>{title}</Title>
+      <Title>
+        {title} {pronouns && `(${pronouns})`}
+      </Title>
       {(size || gender || type || alignment) && (
         <Summary>
           {size && <span>{startCase(size)}</span>}

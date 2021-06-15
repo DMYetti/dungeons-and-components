@@ -1,7 +1,12 @@
 import type { Story, Meta } from "@storybook/react"
 
 import React from "react"
-import { withContainer, argTypes, argOff } from "../../helpers/stories"
+import {
+  withContainer,
+  argTypes,
+  argOff,
+  argHidden,
+} from "../../helpers/stories"
 
 import Cover, { CoverProps } from "./Cover"
 
@@ -12,6 +17,7 @@ export default {
   argTypes: {
     ...argTypes,
     image: argOff,
+    story: argHidden,
   },
 } as Meta
 

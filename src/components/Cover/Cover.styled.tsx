@@ -5,7 +5,11 @@ import styled from "@emotion/styled"
 
 import { Container as Page } from "../Page/Page.styled"
 
-export const Container = styled((props: PageProps) => <Page {...props} />)`
+export const Container = styled(
+  (props: Omit<PageProps, "footer" | "footnote" | "number">) => (
+    <Page {...props} />
+  ),
+)`
   columns: initial;
 `
 
