@@ -1,4 +1,4 @@
-import { themes } from "@storybook/theming"
+import theme from "./theme"
 
 export const parameters = {
   option: {
@@ -17,6 +17,6 @@ export const parameters = {
     },
   },
   docs: {
-    theme: themes.dark,
+    theme,
   },
 }
