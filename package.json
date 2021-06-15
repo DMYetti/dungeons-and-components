@@ -20,7 +20,7 @@
     "dev": "npm run clean && (npm run dev:typescript & npm run dev:babel)",
     "dev:typescript": "tsc --emitDeclarationOnly --watch",
     "dev:babel": "babel --copy-files --out-dir lib --extensions .ts,.tsx --watch src",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --no-manager-cache",
     "storybook:build": "npm run clean && build-storybook -o _storybook"
   },
   "eslintConfig": {
