@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "outDir": "./lib",
-    "declaration": true,
+    "noEmit": true,
 
     "strict": true,
     "allowJs": true,
@@ -19,6 +18,5 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": ["src"],
-  "exclude": ["**/*.stories.tsx"]
+  "include": ["src"]
 }

@@ -26,7 +26,7 @@ import {
   NoteType,
 } from "./StatBlock.styled"
 
-export interface RawStatBlockProps
+export interface BaseStatBlockProps
   extends React.ComponentProps<typeof Container> {
   title: string
   size?: string
@@ -79,7 +79,7 @@ export interface RawStatBlockProps
   children?: React.ReactNode
 }
 
-export function RawStatBlock({
+export function BaseStatBlock({
   title,
   size,
   type,
@@ -109,7 +109,7 @@ export function RawStatBlock({
 
   children,
   ...props
-}: RawStatBlockProps): JSX.Element {
+}: BaseStatBlockProps): JSX.Element {
   const hasLanguages = hasValue(languages)
   const hasSenses = hasValue(senses)
   const hasAbilities = hasValue(abilities)
@@ -387,7 +387,7 @@ export function RawStatBlock({
 }
 
 const templates: {
-  commoner: Omit<RawStatBlockProps, "title">
+  commoner: Omit<BaseStatBlockProps, "title">
 } = {
   commoner: {
     size: "medium",
@@ -407,7 +407,7 @@ const templates: {
   },
 }
 
-export interface StatBlockProps extends Partial<RawStatBlockProps> {
+export interface StatBlockProps extends Partial<BaseStatBlockProps> {
   title: string
   template?: keyof typeof templates
 }
@@ -419,10 +419,10 @@ export default function StatBlock({
   const defaults = (template && templates[template]) || {}
   const mergedProps = merge({}, defaults, props)
 
-  return <RawStatBlock {...mergedProps} />
+  return <BaseStatBlock {...mergedProps} />
 }
 
-function hasValue(value?: any): boolean {
+function hasValue(value?: unknown): boolean {
   if (typeof value === "string") {
     return value !== ""
   }
