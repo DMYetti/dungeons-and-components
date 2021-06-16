@@ -15,7 +15,7 @@ export default function Footer({
   return (
     <Container {...props}>
       {footnote && <Footnote>{footnote}</Footnote>}
-      {number && <PageNumber>{number}</PageNumber>}
+      <PageNumber>{number}</PageNumber>
     </Container>
   )
 }
