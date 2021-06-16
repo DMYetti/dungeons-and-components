@@ -1,5 +1,11 @@
-/examples
 /_coverage
 /_storybook
+/.github
+/.storybook
+/examples
 /src
+/.depcheckrc
+/.eslintignore
+/.nvmrc
+/babel.config.json
 /tsconfig.json

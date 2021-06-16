@@ -18,14 +18,14 @@
     "depcheck": "depcheck .",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf _coverage _storybook lib",
-    "build": "npm run clean && npm run build:typescript && npm run build:babel",
+    "build": "npm run build:typescript && npm run build:babel",
     "build:typescript": "tsc --emitDeclarationOnly",
-    "build:babel": "babel --copy-files --out-dir lib --extensions .ts,.tsx src",
+    "build:babel": "babel --copy-files --no-copy-ignored --out-dir lib --extensions .ts,.tsx src",
     "dev": "npm run clean && (npm run dev:typescript & npm run dev:babel)",
     "dev:typescript": "tsc --emitDeclarationOnly --watch",
-    "dev:babel": "babel --copy-files --out-dir lib --extensions .ts,.tsx --watch src",
+    "dev:babel": "npm run build:babel -- --watch",
     "storybook": "start-storybook -p 6006 --no-manager-cache",
-    "storybook:build": "npm run clean && build-storybook -o _storybook"
+    "storybook:build": "build-storybook -o _storybook"
   },
   "eslintConfig": {
     "root": true,
