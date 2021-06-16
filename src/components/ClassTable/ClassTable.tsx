@@ -154,7 +154,7 @@ export default function ClassTable<T>({
         {
           key: "features",
           label: "Features",
-          transform: (v) => (v ? v.join(", ") : orDash(v)),
+          transform: (v: string[]) => (v ? v.join(", ") : orDash(v)),
         },
         ...spellData,
         ...afterCols,

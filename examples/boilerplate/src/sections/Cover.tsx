@@ -1,8 +1,6 @@
-import React from 'react'
+import { Cover as BaseCover } from "dungeons-and-components"
 
-import { Cover as BaseCover } from 'dungeons-and-components'
-
-export default function Cover() {
+export default function Cover(): JSX.Element {
   return (
     <BaseCover
       title="A Dungeons and Dragons 5e adventure"

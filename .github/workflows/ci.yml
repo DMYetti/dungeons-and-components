@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,39 @@ jobs:
 
       - name: Build Storybook
         run: npm run storybook:build
+
+      - name: Notify Slack for Failures
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: ci
+          status: FAILED
+          color: danger
+  example-boilerplate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Change Directory
+        run: cd examples/boilerplate
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Precheck
+        run: |
+          npm ci
+          npm run eslint
+          npm run typecheck
+
+      - name: Build
+        run: npm run build
 
       - name: Notify Slack for Failures
         if: failure()
