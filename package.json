@@ -1,6 +1,6 @@
 {
   "name": "dungeons-and-components",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "A React component library for Dungeons and Dragons.",
   "author": "Christopher Baker <christpher@dmyetti.com>",
   "license": "MIT",
