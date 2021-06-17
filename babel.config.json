@@ -5,6 +5,5 @@
     "@babel/preset-env"
   ],
   "plugins": ["@emotion"],
-  "sourceMaps": true,
-  "ignore": ["**/*.stories.tsx"]
+  "sourceMaps": true
 }

@@ -3,7 +3,7 @@ import type { Story, Meta } from "@storybook/react"
 import React from "react"
 import { withHalfPage, argTypes } from "../../helpers/stories"
 
-import Note, { Props } from "./Note"
+import Note, { NoteProps } from "./Note"
 
 export default {
   title: "Components/Note",
@@ -12,7 +12,7 @@ export default {
   argTypes,
 } as Meta
 
-export const Basic: Story<Props> = (args) => (
+export const Basic: Story<NoteProps> = (args) => (
   <Note {...args}>
     <p>Do the thing!</p>
   </Note>
