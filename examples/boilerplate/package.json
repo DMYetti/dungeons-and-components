@@ -1,7 +1,7 @@
 {
   "name": "dungeons-and-components-examples-boilerplate",
   "version": "0.1.0",
-  "description": "A Dungeons and Dragons 5e adventure, written with dungeons-and-components.",
+  "description": "A D&D 5e adventure example, written with dungeons-and-components.",
   "private": true,
   "scripts": {
     "eslint": "eslint .",

@@ -28,7 +28,7 @@ export const Basic: Story<TableProps<Data>> = (args) => (
       {
         key: "d6",
         label: "d6",
-        transform: (_, index) => index + 1,
+        transform: (_1, _2, index) => index + 1,
         narrow: true,
       },
       {

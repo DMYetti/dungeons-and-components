@@ -14,15 +14,15 @@ import {
   Cell,
 } from "./Table.styled"
 
-export interface Column extends React.ComponentProps<typeof Cell> {
+export interface Column<T> extends React.ComponentProps<typeof Cell> {
   key: string
   label?: string
-  transform?: (value: any, index: number) => any
+  transform?: (value: any, data: T, index: number) => any
 }
 
 export interface TableProps<T> extends React.ComponentProps<typeof Container> {
   title?: string
-  columns: Column[]
+  columns: Column<T>[]
   data: Array<T>
   footer?: Array<T>
 }
@@ -53,11 +53,11 @@ export default function Table<T>({
           {data.map((data, rowIndex) => (
             <Row key={((data as unknown) as { key: string }).key || rowIndex}>
               {columns.map(({ key, label, transform, ...props }, colIndex) => {
-                const value = get(data, key)
+                const value = key === "@index" ? rowIndex : get(data, key)
 
                 return (
                   <Cell key={label || colIndex} {...props}>
-                    {transform ? transform(value, rowIndex) : value}
+                    {transform ? transform(value, data, rowIndex) : value}
                   </Cell>
                 )
               })}
@@ -75,7 +75,7 @@ export default function Table<T>({
 
                     return (
                       <Footing key={label || colIndex} {...props}>
-                        {transform ? transform(value, rowIndex) : value}
+                        {transform ? transform(value, data, rowIndex) : value}
                       </Footing>
                     )
                   },
