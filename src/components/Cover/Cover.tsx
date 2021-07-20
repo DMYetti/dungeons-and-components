@@ -14,10 +14,8 @@ export interface CoverProps
   title?: string
   subtitle?: string
   author?: string
-  image?: {
-    src: string
-    alt: string
-  }
+  image?: React.ComponentProps<typeof Image>
+  backgroundImage?: string
   children?: React.ReactNode
 }
 
@@ -29,11 +27,12 @@ export default function Cover({
   subtitle,
   author,
   image,
+  backgroundImage,
   children,
   ...props
 }: CoverProps): JSX.Element {
   return (
-    <Container {...props}>
+    <Container {...props} backgroundImage={backgroundImage}>
       {image && <Image {...image} />}
 
       <Content>

@@ -92,6 +92,7 @@ export const ColumnBreak = styled.div`
 `
 
 export const BaseContainer = styled.div<{
+  backgroundImage?: string
   story?: "half" | "full"
   error?: boolean
 }>`
@@ -113,7 +114,9 @@ export const BaseContainer = styled.div<{
   -webkit-print-color-adjust: exact;
 
   background-color: #eee5ce;
-  background-image: url(${background});
+  background-image: url(${({ backgroundImage }) =>
+    backgroundImage || background});
+  background-size: cover;
   background-position: 50% 50%;
 
   // Special styles for use with storybook stories
