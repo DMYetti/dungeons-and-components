@@ -53,6 +53,13 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Build Main
+        run: |
+          cd ../..
+          npm ci
+          npm run build
+          rm -rf node_modules
+
       - name: Precheck
         run: |
           npm ci

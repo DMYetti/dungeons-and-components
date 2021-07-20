@@ -6,13 +6,12 @@ import Footer from "./components/Footer/Footer"
 
 import {
   Container,
-  PageTitle as PageTitleBase,
+  ColumnBreak as ColumnBreakBase,
   Heading1 as Heading1Base,
   Heading2 as Heading2Base,
   Heading3 as Heading3Base,
+  PageTitle as PageTitleBase,
 } from "./Page.styled"
-
-export { ColumnBreak } from "./Page.styled"
 
 export interface PageProps extends React.ComponentProps<typeof Container> {
   footer?: boolean
@@ -35,6 +34,12 @@ export default function Page({
       {footer && !story && <Footer footnote={footnote} number={number} />}
     </Container>
   )
+}
+
+export function ColumnBreak({
+  ...props
+}: React.ComponentProps<typeof ColumnBreakBase>): JSX.Element {
+  return <ColumnBreakBase {...props} />
 }
 
 interface TitlePropTypes {

@@ -1,12 +1,12 @@
 import {
-  Page,
-  PageTitle,
+  ColumnBreak,
+  Description,
   Heading1,
   Heading2,
-  TableOfContents,
-  Description,
   Legalese,
-  ColumnBreak,
+  Page,
+  PageTitle,
+  TableOfContents,
 } from "dungeons-and-components"
 
 export default function Introduction(): JSX.Element {
