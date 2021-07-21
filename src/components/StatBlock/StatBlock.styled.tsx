@@ -53,6 +53,17 @@ export const Summary = styled.div`
   }
 `
 
+export const Source = styled.p`
+  margin: 0 0 0.0625in;
+  span {
+    margin-right: 0.25em;
+  }
+
+  ${Summary} + & {
+    margin-top: -0.5em !important;
+  }
+`
+
 export const InfoList = styled.ul`
   list-style: none;
   margin: 0.0625in 0;

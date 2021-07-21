@@ -17,15 +17,16 @@ export default function MagicItem({
   title,
   type,
   rarity,
-  children,
   attunement,
   sourceTitle,
   sourceLink,
+  children,
   ...props
 }: MagicItemProps): JSX.Element {
   return (
     <Container {...props}>
       <Title>{title}</Title>
+
       <Info>
         {startCase(type)}, {startCase(rarity)}
         {attunement &&
@@ -33,6 +34,7 @@ export default function MagicItem({
             ? ` (requires attunement by ${attunement})`
             : " (requires attunement)")}
       </Info>
+
       <Source>
         {sourceTitle && (
           <>
@@ -52,6 +54,7 @@ export default function MagicItem({
           </>
         )}
       </Source>
+
       {children}
     </Container>
   )

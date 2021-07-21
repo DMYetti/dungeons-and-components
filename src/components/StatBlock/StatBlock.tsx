@@ -14,6 +14,7 @@ import {
   Title,
   Heading,
   Summary,
+  Source,
   InfoList,
   InfoItem,
   InfoLabel,
@@ -76,6 +77,9 @@ export interface BaseStatBlockProps
     description?: string
   }>
 
+  sourceTitle?: string
+  sourceLink?: string
+
   children?: React.ReactNode
 }
 
@@ -106,6 +110,9 @@ export function BaseStatBlock({
   properties,
   traits,
   actions,
+
+  sourceTitle,
+  sourceLink,
 
   children,
   ...props
@@ -144,6 +151,28 @@ export function BaseStatBlock({
           )}
           {alignment && <span>{startCase(alignment)}</span>}
         </Summary>
+      )}
+
+      {sourceTitle && (
+        <Source>
+          {sourceTitle && (
+            <>
+              [source:{" "}
+              {sourceLink ? (
+                <a
+                  href={sourceLink}
+                  target="_blank"
+                  rel="external noopener noreferrer"
+                >
+                  {sourceTitle}
+                </a>
+              ) : (
+                sourceTitle
+              )}
+              ]
+            </>
+          )}
+        </Source>
       )}
 
       {(armorClass || hitPoints || speed) && (
@@ -407,7 +436,7 @@ const templates: {
   },
 }
 
-export interface StatBlockProps extends Partial<BaseStatBlockProps> {
+export interface StatBlockProps extends BaseStatBlockProps {
   title: string
   template?: keyof typeof templates
 }

@@ -18,6 +18,14 @@ export const Details = styled.div`
   font-style: italic;
 `
 
+export const Source = styled.p`
+  font-style: italic;
+
+  ${Details} + & {
+    margin-top: -0.5em !important;
+  }
+`
+
 export const InfoList = styled.ul`
   list-style: none;
   margin: 0.125in 0;

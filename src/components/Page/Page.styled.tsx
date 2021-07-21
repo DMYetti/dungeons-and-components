@@ -21,10 +21,6 @@ export const PageTitle = styled.h1`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  & + * {
-    margin-top: 0 !important;
-  }
 `
 
 export const Heading1 = styled.h2<{
@@ -90,10 +86,6 @@ export const ColumnBreak = styled.div`
   break-after: always;
   -webkit-column-break-after: always;
   -moz-column-break-after: always;
-
-  & + * {
-    margin-top: 0 !important;
-  }
 `
 
 export const BaseContainer = styled.div<{
