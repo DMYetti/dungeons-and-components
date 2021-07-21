@@ -1,9 +1,14 @@
+import type { Mode } from "./services/Page/Page"
+
 import React, { forwardRef, useEffect, useRef, useState } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
+
 import { withWide } from "../../helpers/styled"
 
-import background from "./assets/background.jpg"
+import { usePageMode } from "./services/Page/Page"
+
+import defaultBackgroundImage from "./assets/background.jpg"
 
 export const PageTitle = styled.h1`
   ${withWide({ wide: true })}
@@ -92,6 +97,7 @@ export const ColumnBreak = styled.div`
 `
 
 export const BaseContainer = styled.div<{
+  mode: Mode
   backgroundImage?: string
   story?: "half" | "full"
   error?: boolean
@@ -113,32 +119,27 @@ export const BaseContainer = styled.div<{
   text-rendering: optimizeLegibility;
   -webkit-print-color-adjust: exact;
 
-  background-color: #eee5ce;
-  background-image: url(${({ backgroundImage }) =>
-    backgroundImage || background});
-  background-size: cover;
-  background-position: 50% 50%;
-
-  // Special styles for use with storybook stories
-  ${({ story }) =>
-    story &&
-    css`
-      height: auto;
-      padding: 0.5in;
-    `}
-  ${({ story }) =>
-    story === "half" &&
-    css`
-      column-count: 1;
-      width: 4.5in;
-    `}
+  ${({ mode, backgroundImage = defaultBackgroundImage }) => {
+    if (mode === "default") {
+      return `
+        background-color: #eee5ce;
+        background-image: url(${backgroundImage});
+        background-size: cover;
+        background-position: 50% 50%;
+    `
+    }
+  }}
 
   p {
     margin: 0.125in 0;
   }
 
-  // These are for use of content, not internal components
+  a {
+    color: inherit;
+    text-decoration: underline dotted;
+  }
 
+  // These are for styling user content, not other components.
   > {
     ul,
     ol {
@@ -200,6 +201,20 @@ export const BaseContainer = styled.div<{
     line-height: 0;
   }
 
+  // Special styles for use with storybook stories
+  ${({ story }) =>
+    story &&
+    css`
+      height: auto;
+      padding: 0.5in;
+    `}
+  ${({ story }) =>
+    story === "half" &&
+    css`
+      column-count: 1;
+      width: 4.5in;
+    `}
+
   ${({ error }) =>
     error &&
     css`
@@ -219,10 +234,11 @@ export const BaseContainer = styled.div<{
 
 export const Container = forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseContainer>
+  Omit<React.ComponentProps<typeof BaseContainer>, "mode">
 >((props, ref1) => {
   const [error, setError] = useState(props.error ?? false)
   const ref2 = useRef<HTMLDivElement>(null)
+  const mode = usePageMode()
 
   const ref = (ref1 || ref2) as typeof ref2
 
@@ -242,5 +258,5 @@ export const Container = forwardRef<
     }
   }, [ref, props.error])
 
-  return <BaseContainer {...props} ref={ref} error={error} />
+  return <BaseContainer {...props} ref={ref} mode={mode} error={error} />
 })

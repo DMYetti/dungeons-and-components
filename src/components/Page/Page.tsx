@@ -13,6 +13,8 @@ import {
   PageTitle as PageTitleBase,
 } from "./Page.styled"
 
+export * from "./services/Page/Page"
+
 export interface PageProps extends React.ComponentProps<typeof Container> {
   footer?: boolean
   footnote?: string
