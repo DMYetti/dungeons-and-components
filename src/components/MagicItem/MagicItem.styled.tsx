@@ -16,3 +16,12 @@ export const Info = styled.p`
   margin-top: 0 !important;
   font-style: italic;
 `
+
+export const Source = styled.p`
+  margin-top: 0 !important;
+  font-style: italic;
+
+  ${Info} + & {
+    margin-top: -0.75em !important;
+  }
+`
