@@ -23,6 +23,7 @@ export const ListItem = styled.li`
 
 export const Label = styled.div<{
   level: number
+  name: string
 }>`
   ${({ level }) =>
     level === 0 &&

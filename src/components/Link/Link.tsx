@@ -1,14 +1,21 @@
-import React, { createContext, useContext, useRef, useState } from "react"
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 
 import { Container } from "./Link.styled"
 
-type LinkTarget = React.RefObject<HTMLHeadingElement>
+export type LinkTarget = React.RefObject<HTMLHeadingElement>
 
 const Context = createContext<{
-  links: React.MutableRefObject<Record<string, LinkTarget>>
+  links: Record<string, LinkTarget>
   register: (ref: LinkTarget, name: string) => void
 }>({
-  links: { current: {} },
+  links: {},
   register: () => undefined,
 })
 
@@ -22,8 +29,8 @@ export default function Link({
   children,
   ...props
 }: LinkProps): JSX.Element {
-  const { links } = useContext(Context)
-  const link = links.current[name]
+  const links = useLinks()
+  const link = links[name]
 
   function handleClick() {
     link?.current?.scrollIntoView({
@@ -43,31 +50,50 @@ export interface LinkProviderProps {
 }
 
 export function LinkProvider({ children }: LinkProviderProps): JSX.Element {
+  const [, forceUpdate] = useState({})
   const links = useRef<Record<string, LinkTarget>>({})
 
   const changed = useRef<Record<string, boolean>>({})
+  const warned = useRef<Record<string, boolean>>({})
 
-  function register(ref: LinkTarget, name: string) {
+  const register = useCallback((ref: LinkTarget, name: string) => {
     if (links.current[name] !== ref) {
-      if (changed.current[name]) {
+      if (changed.current[name] && !warned.current[name]) {
         console.warn(`Duplicate Link definition: ${name}`)
+        warned.current[name] = true
       }
 
       links.current[name] = ref
       changed.current[name] = true
+
+      forceUpdate({})
+
+      return () => {
+        delete changed.current[name]
+        delete links.current[name]
+        delete warned.current[name]
+      }
     }
-  }
+  }, [])
 
   return (
-    <Context.Provider value={{ links, register }}>{children}</Context.Provider>
+    <Context.Provider value={{ links: links.current, register }}>
+      {children}
+    </Context.Provider>
   )
+}
+
+export function useLinks(): Record<string, LinkTarget> {
+  const { links } = useContext(Context)
+
+  return links
 }
 
 export function useLink(name: string): LinkTarget {
   const { register } = useContext(Context)
   const ref = useRef<HTMLHeadingElement>(null)
 
-  register(ref, name)
+  useEffect(() => register(ref, name), [register, name])
 
   return ref
 }

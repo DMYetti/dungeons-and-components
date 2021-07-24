@@ -31,7 +31,7 @@ export default function Page({
   ...props
 }: PageProps): JSX.Element {
   return (
-    <Container story={story} {...props}>
+    <Container story={story} {...props} data-page={footer}>
       {children}
       {footer && !story && <Footer footnote={footnote} number={number} />}
     </Container>

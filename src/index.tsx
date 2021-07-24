@@ -43,13 +43,11 @@ export default function Container({
   ...props
 }: ContainerProps): JSX.Element {
   return (
-    <LinkProvider>
-      <PageProvider mode={mode}>
-        <Globals />
-        <BaseContainer {...props} mode={mode}>
-          {children}
-        </BaseContainer>
-      </PageProvider>
-    </LinkProvider>
+    <PageProvider mode={mode}>
+      <Globals />
+      <BaseContainer {...props} mode={mode}>
+        <LinkProvider>{children}</LinkProvider>
+      </BaseContainer>
+    </PageProvider>
   )
 }
