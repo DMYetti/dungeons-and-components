@@ -54,7 +54,7 @@ export const Body = styled.tbody``
 export const Footer = styled.tfoot``
 
 export const Row = styled.tr`
-  ${Body} &:nth-child(odd) {
+  ${Body} &:nth-of-type(odd) {
     background-color: #e0e5c1;
   }
 `

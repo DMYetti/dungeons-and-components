@@ -5,10 +5,10 @@ import { Container } from "./Link.styled"
 type LinkTarget = React.RefObject<HTMLHeadingElement>
 
 const Context = createContext<{
-  links: Record<string, LinkTarget>
-  register: (name: string, ref: LinkTarget) => void
+  links: React.MutableRefObject<Record<string, LinkTarget>>
+  register: (ref: LinkTarget, name: string) => void
 }>({
-  links: {},
+  links: { current: {} },
   register: () => undefined,
 })
 
@@ -23,7 +23,7 @@ export default function Link({
   ...props
 }: LinkProps): JSX.Element {
   const { links } = useContext(Context)
-  const link = links[name]
+  const link = links.current[name]
 
   function handleClick() {
     link?.current?.scrollIntoView({
@@ -43,35 +43,23 @@ export interface LinkProviderProps {
 }
 
 export function LinkProvider({ children }: LinkProviderProps): JSX.Element {
-  const [, forceUpdate] = useState({})
   const links = useRef<Record<string, LinkTarget>>({})
-  const timer = useRef<NodeJS.Timeout>()
 
   const changed = useRef<Record<string, boolean>>({})
-  const warned = useRef<Record<string, boolean>>({})
 
-  function register(name: string, ref: LinkTarget) {
+  function register(ref: LinkTarget, name: string) {
     if (links.current[name] !== ref) {
-      if (changed.current[name] && !warned.current[name]) {
+      if (changed.current[name]) {
         console.warn(`Duplicate Link definition: ${name}`)
-        warned.current[name] = true
       }
 
       links.current[name] = ref
       changed.current[name] = true
-
-      timer.current && clearTimeout(timer.current)
-      timer.current = setTimeout(() => {
-        changed.current = {}
-        forceUpdate({})
-      }, 0)
     }
   }
 
   return (
-    <Context.Provider value={{ links: links.current, register }}>
-      {children}
-    </Context.Provider>
+    <Context.Provider value={{ links, register }}>{children}</Context.Provider>
   )
 }
 
@@ -79,11 +67,7 @@ export function useLink(name: string): LinkTarget {
   const { register } = useContext(Context)
   const ref = useRef<HTMLHeadingElement>(null)
 
-  if (typeof register === "function") {
-    if (typeof name === "string") {
-      register(name, ref)
-    }
-  }
+  register(ref, name)
 
   return ref
 }

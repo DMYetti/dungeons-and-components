@@ -16,9 +16,6 @@ export const Container = styled.blockquote<{
   border-image-outset: 0.03125in;
   box-shadow: 0 0 0.0625in #faf7ea;
 
-  > :first-child {
-    margin-top: 0;
-  }
   > :last-child {
     margin-bottom: 0;
   }

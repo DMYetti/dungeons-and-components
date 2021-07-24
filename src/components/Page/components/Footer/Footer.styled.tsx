@@ -15,7 +15,7 @@ export const Container = styled.div`
   background-image: url(${background});
   background-size: cover;
 
-  ${Page}:nth-child(odd) > & {
+  ${Page}:nth-of-type(odd) > & {
     transform: scaleX(-1);
   }
 `
@@ -29,7 +29,7 @@ export const Footnote = styled.div`
 
   right: 0.8in;
   text-align: right;
-  ${Page}:nth-child(odd) & {
+  ${Page}:nth-of-type(odd) & {
     transform: scaleX(-1);
     text-align: left;
   }
@@ -48,7 +48,7 @@ export const PageNumber = styled.div`
   }
 
   right: 0;
-  ${Page}:nth-child(odd) & {
+  ${Page}:nth-of-type(odd) & {
     transform: scaleX(-1);
   }
 `

@@ -18,9 +18,6 @@ export const Container = styled.div<{
   border-image: url(${border}) 36 24 fill stretch;
   box-shadow: 0 0.0625in 0.125in #888;
 
-  > :first-child {
-    margin-top: 0;
-  }
   > :last-child {
     margin-bottom: 0;
   }
@@ -81,6 +78,10 @@ export const InfoLabel = styled.strong`
   margin-right: 0.5em;
 `
 
+export const InfoValue = styled.span`
+  margin-left: 0.25em;
+`
+
 export const Abilities = styled.div`
   display: flex;
   flex-direction: row;
@@ -115,4 +116,8 @@ export const NoteLabel = styled.strong`
 export const NoteType = styled.em`
   font-family: ScalySans;
   font-style: italic;
+`
+
+export const NoteValue = styled.span`
+  margin-left: 0.25em;
 `

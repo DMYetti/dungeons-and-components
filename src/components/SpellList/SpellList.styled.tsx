@@ -26,10 +26,6 @@ export const Title = styled.h2`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const Level = styled.div``
@@ -42,10 +38,6 @@ export const LevelTitle = styled.h3`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const Spells = styled.ul`

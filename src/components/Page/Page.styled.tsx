@@ -37,7 +37,7 @@ export const Heading1 = styled.h2<{
   font-weight: 800;
   color: #58180d;
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 `
@@ -56,10 +56,6 @@ export const Heading2 = styled.h3<{
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const Heading3 = styled.h4<{
@@ -75,10 +71,6 @@ export const Heading3 = styled.h4<{
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const ColumnBreak = styled.div`
@@ -149,9 +141,6 @@ export const BaseContainer = styled.div<{
         text-indent: 1em;
       }
 
-      &:first-child {
-        margin-top: 0;
-      }
       &:last-child {
         margin-bottom: 0;
       }

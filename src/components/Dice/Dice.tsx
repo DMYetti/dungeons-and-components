@@ -12,6 +12,7 @@ export interface DiceProps extends React.ComponentProps<typeof Container> {
 }
 
 export default function Dice({ value, type }: DiceProps): JSX.Element {
+  value = value.replace(/ /g, "")
   const average = getDiceAverage(value)
 
   return (
