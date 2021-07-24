@@ -32,14 +32,10 @@ export const Heading1 = styled.h2<{
   line-height: 1;
   clear: both;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-of-type {
-    margin-top: 0;
-  }
 `
 
 export const Heading2 = styled.h3<{
@@ -52,7 +48,7 @@ export const Heading2 = styled.h3<{
   border-bottom: 2px solid #c9ad6a;
   clear: both;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
@@ -67,7 +63,7 @@ export const Heading3 = styled.h4<{
   line-height: 1;
   clear: both;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
@@ -114,20 +110,11 @@ export const BaseContainer = styled.div<{
     }
   }}
 
-  p {
-    margin: 0.125in 0;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: underline dotted;
-  }
-
   // These are for styling user content, not other components.
   > {
     ul,
     ol {
-      margin: 0.125in 0;
+      margin: 0 0 0.125in;
       padding-left: 0.25in;
 
       ul,
@@ -139,10 +126,6 @@ export const BaseContainer = styled.div<{
     p {
       & + p {
         text-indent: 1em;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
       }
     }
 
@@ -159,6 +142,15 @@ export const BaseContainer = styled.div<{
       line-height: 0.8em;
       font-variant: normal;
     }
+  }
+
+  p {
+    margin: 0 0 0.125in;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline dotted;
   }
 
   em {
@@ -180,6 +172,10 @@ export const BaseContainer = styled.div<{
     vertical-align: sub;
     font-size: smaller;
     line-height: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
   }
 
   // Special styles for use with storybook stories

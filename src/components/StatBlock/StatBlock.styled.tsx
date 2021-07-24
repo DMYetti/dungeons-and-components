@@ -12,7 +12,7 @@ export const Container = styled.div<{
   ${withWide}
 
   font-family: ScalySans;
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   border-style: solid;
   border-width: 0.1875in 0.125in;
   border-image: url(${border}) 36 24 fill stretch;

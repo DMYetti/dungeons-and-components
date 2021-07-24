@@ -9,7 +9,7 @@ export const Container = styled.blockquote<{
   ${withBreakable}
 
   font-family: ScalySans;
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   border-style: solid;
   border-width: 0.125in;
   border-image: url(${border}) 24 fill stretch;

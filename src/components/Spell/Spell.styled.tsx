@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 export const Container = styled.div`
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
 `
 
 export const Title = styled.h3`
@@ -28,7 +28,7 @@ export const Source = styled.p`
 
 export const InfoList = styled.ul`
   list-style: none;
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   padding: 0;
 `
 

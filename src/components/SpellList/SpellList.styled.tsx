@@ -22,7 +22,7 @@ export const Title = styled.h2`
   line-height: 1;
   border-bottom: 2px solid #c9ad6a;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
@@ -34,7 +34,7 @@ export const LevelTitle = styled.h3`
   font-size: 0.2in;
   line-height: 1;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;

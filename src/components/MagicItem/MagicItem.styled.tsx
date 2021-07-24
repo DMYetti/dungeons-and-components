@@ -1,6 +1,10 @@
 import styled from "@emotion/styled"
 
-export const Container = styled.div``
+export const Container = styled.div`
+  > :last-child {
+    margin-bottom: 0;
+  }
+`
 
 export const Title = styled.h2`
   font-size: 0.25in;

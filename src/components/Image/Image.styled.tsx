@@ -8,7 +8,7 @@ export const Container = styled.div<{
 
   border: 1px solid #58180D;
   padding: 0.125in;
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
 
   > :last-child {
     margin-bottom: 0;

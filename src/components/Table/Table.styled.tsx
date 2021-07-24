@@ -11,7 +11,7 @@ export const Container = styled.div<{
 }>`
   ${withBreakable}
   ${withWide}
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
 
   ${({ bordered }) =>
     bordered &&
