@@ -1,9 +1,14 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react"
+import type { Mode } from "./services/Page/Page"
+
+import React, { forwardRef } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
+
 import { withWide } from "../../helpers/styled"
 
-import background from "./assets/background.jpg"
+import { usePageMode } from "./services/Page/Page"
+
+import defaultBackgroundImage from "./assets/background.jpg"
 
 export const PageTitle = styled.h1`
   ${withWide({ wide: true })}
@@ -16,10 +21,6 @@ export const PageTitle = styled.h1`
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  & + * {
-    margin-top: 0 !important;
-  }
 `
 
 export const Heading1 = styled.h2<{
@@ -31,14 +32,10 @@ export const Heading1 = styled.h2<{
   line-height: 1;
   clear: both;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const Heading2 = styled.h3<{
@@ -51,14 +48,10 @@ export const Heading2 = styled.h3<{
   border-bottom: 2px solid #c9ad6a;
   clear: both;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const Heading3 = styled.h4<{
@@ -70,14 +63,10 @@ export const Heading3 = styled.h4<{
   line-height: 1;
   clear: both;
 
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   font-family: MrJeeves;
   font-weight: 800;
   color: #58180d;
-
-  &:first-child {
-    margin-top: 0;
-  }
 `
 
 export const ColumnBreak = styled.div`
@@ -85,13 +74,11 @@ export const ColumnBreak = styled.div`
   break-after: always;
   -webkit-column-break-after: always;
   -moz-column-break-after: always;
-
-  & + * {
-    margin-top: 0 !important;
-  }
 `
 
 export const BaseContainer = styled.div<{
+  mode: Mode
+  backgroundImage?: string
   story?: "half" | "full"
   error?: boolean
 }>`
@@ -112,34 +99,22 @@ export const BaseContainer = styled.div<{
   text-rendering: optimizeLegibility;
   -webkit-print-color-adjust: exact;
 
-  background-color: #eee5ce;
-  background-image: url(${background});
-  background-position: 50% 50%;
+  ${({ mode, backgroundImage = defaultBackgroundImage }) => {
+    if (mode === "default") {
+      return `
+        background-color: #eee5ce;
+        background-image: url(${backgroundImage});
+        background-size: cover;
+        background-position: 50% 50%;
+    `
+    }
+  }}
 
-  // Special styles for use with storybook stories
-  ${({ story }) =>
-    story &&
-    css`
-      height: auto;
-      padding: 0.5in;
-    `}
-  ${({ story }) =>
-    story === "half" &&
-    css`
-      column-count: 1;
-      width: 4.5in;
-    `}
-
-  p {
-    margin: 0.125in 0;
-  }
-
-  // These are for use of content, not internal components
-
+  // These are for styling user content, not other components.
   > {
     ul,
     ol {
-      margin: 0.125in 0;
+      margin: 0 0 0.125in;
       padding-left: 0.25in;
 
       ul,
@@ -151,13 +126,6 @@ export const BaseContainer = styled.div<{
     p {
       & + p {
         text-indent: 1em;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
-      &:last-child {
-        margin-bottom: 0;
       }
     }
 
@@ -174,6 +142,15 @@ export const BaseContainer = styled.div<{
       line-height: 0.8em;
       font-variant: normal;
     }
+  }
+
+  p {
+    margin: 0 0 0.125in;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline dotted;
   }
 
   em {
@@ -197,6 +174,24 @@ export const BaseContainer = styled.div<{
     line-height: 0;
   }
 
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // Special styles for use with storybook stories
+  ${({ story }) =>
+    story &&
+    css`
+      height: auto;
+      padding: 0.5in;
+    `}
+  ${({ story }) =>
+    story === "half" &&
+    css`
+      column-count: 1;
+      width: 4.5in;
+    `}
+
   ${({ error }) =>
     error &&
     css`
@@ -216,28 +211,29 @@ export const BaseContainer = styled.div<{
 
 export const Container = forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof BaseContainer>
->((props, ref1) => {
-  const [error, setError] = useState(props.error ?? false)
-  const ref2 = useRef<HTMLDivElement>(null)
+  Omit<React.ComponentProps<typeof BaseContainer>, "mode">
+>((props, ref) => {
+  const mode = usePageMode()
+  // const [error, setError] = useState(props.error ?? false)
+  // const ref2 = useRef<HTMLDivElement>(null)
 
-  const ref = (ref1 || ref2) as typeof ref2
+  // const ref = (ref1 || ref2) as typeof ref2
 
-  useEffect(() => {
-    if (typeof props.error !== "undefined") {
-      setError(props.error)
-      return
-    }
+  // useEffect(() => {
+  //   if (typeof props.error !== "undefined") {
+  //     setError(props.error)
+  //     return
+  //   }
 
-    const page = ref.current && ref.current
-    if (page) {
-      const overflow =
-        page.offsetWidth < page.scrollWidth ||
-        page.offsetHeight < page.scrollHeight
+  //   const page = ref.current && ref.current
+  //   if (page) {
+  //     const overflow =
+  //       page.offsetWidth < page.scrollWidth ||
+  //       page.offsetHeight < page.scrollHeight
 
-      setError(overflow)
-    }
-  }, [ref, props.error])
+  //     setError(overflow)
+  //   }
+  // }, [ref, props.error])
 
-  return <BaseContainer {...props} ref={ref} error={error} />
+  return <BaseContainer {...props} ref={ref} mode={mode} />
 })

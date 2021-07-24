@@ -1,6 +1,10 @@
 import styled from "@emotion/styled"
 
-export const Container = styled.div``
+export const Container = styled.div`
+  > :last-child {
+    margin-bottom: 0;
+  }
+`
 
 export const Title = styled.h2`
   font-size: 0.25in;
@@ -15,4 +19,13 @@ export const Title = styled.h2`
 export const Info = styled.p`
   margin-top: 0 !important;
   font-style: italic;
+`
+
+export const Source = styled.p`
+  margin-top: 0 !important;
+  font-style: italic;
+
+  ${Info} + & {
+    margin-top: -0.75em !important;
+  }
 `

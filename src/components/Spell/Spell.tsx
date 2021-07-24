@@ -6,6 +6,7 @@ import {
   Container,
   Title,
   Details,
+  Source,
   InfoList,
   Info,
   InfoLabel,
@@ -28,6 +29,8 @@ export interface SpellProps extends React.ComponentProps<typeof Container> {
     somatic?: boolean
     material?: string
   }
+  sourceTitle?: string
+  sourceLink?: string
   children: React.ReactNode
 }
 
@@ -41,6 +44,8 @@ export default function Spell({
   // concentration, // TODO
   // ritual, // TODO
   components,
+  sourceTitle,
+  sourceLink,
   children,
   ...props
 }: SpellProps): JSX.Element {
@@ -52,6 +57,28 @@ export default function Spell({
         <Details>
           {getOrdinal(level)}-level {school}
         </Details>
+      )}
+
+      {sourceTitle && (
+        <Source>
+          {sourceTitle && (
+            <>
+              [source:{" "}
+              {sourceLink ? (
+                <a
+                  href={sourceLink}
+                  target="_blank"
+                  rel="external noopener noreferrer"
+                >
+                  {sourceTitle}
+                </a>
+              ) : (
+                sourceTitle
+              )}
+              ]
+            </>
+          )}
+        </Source>
       )}
 
       <InfoList>

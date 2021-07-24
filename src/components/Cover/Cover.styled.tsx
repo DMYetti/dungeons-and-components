@@ -13,13 +13,32 @@ export const Container = styled(
   columns: initial;
 `
 
-export const Image = styled.img`
+export const Image = styled.img<{
+  position?: "center" | "bottom"
+}>`
   position: absolute;
-  max-width: 100%;
-  max-height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+
+  ${({ position = "center" }) => {
+    if (position === "center") {
+      return `
+        max-width: 100%;
+        max-height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      `
+    }
+
+    if (position === "bottom") {
+      return `
+        max-width: 100%;
+        max-height: 100%;
+        left: 50%;
+        bottom: 0%;
+        transform: translateX(-50%);
+      `
+    }
+  }}
 `
 
 export const Content = styled.div`

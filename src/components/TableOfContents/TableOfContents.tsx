@@ -1,6 +1,8 @@
+import type { LinkTarget } from "../Link/Link"
+
 import React from "react"
 
-import Link from "../Link/Link"
+import Link, { useLinks } from "../Link/Link"
 
 import {
   Container,
@@ -42,7 +44,8 @@ interface RowsProps {
 }
 
 function Rows({ level, items: items_ }: RowsProps): JSX.Element {
-  const items = normalize(items_)
+  const links = useLinks()
+  const items = normalize(links, items_)
 
   return (
     <List>
@@ -54,7 +57,7 @@ function Rows({ level, items: items_ }: RowsProps): JSX.Element {
         ) : (
           <ListItem key={index}>
             <PageNumber level={level}>{item.page}</PageNumber>
-            <Label as={Link} level={level} title={item.name}>
+            <Label as={Link} level={level} name={item.name}>
               {item.label}
             </Label>
           </ListItem>
@@ -64,16 +67,51 @@ function Rows({ level, items: items_ }: RowsProps): JSX.Element {
   )
 }
 
-function normalize(list: ItemsInput): Items {
+function normalize(
+  links: Record<string, { ref: LinkTarget; label: string }>,
+  list: ItemsInput,
+): Items {
   return list.map((item) => {
     if (Array.isArray(item)) {
-      return normalize(item)
+      return normalize(links, item)
     }
 
     if (typeof item === "string") {
-      return { label: item, name: item }
+      const link = links[item]
+
+      return {
+        name: item,
+        label: link?.label || item,
+        page: getPage(link),
+      }
     }
 
-    return item
+    const link = links[item.name]
+
+    return {
+      ...item,
+      page: typeof item.page === "number" ? item.page : getPage(link),
+    }
   })
+}
+
+function getPage(link?: {
+  ref: LinkTarget
+  label: string
+}): number | undefined {
+  if (link) {
+    const page = link.ref.current?.closest("[data-page=true]")
+    if (page) {
+      const container = page.parentElement
+      if (container) {
+        const pages = Array.from(container.querySelectorAll("[data-page=true]"))
+        const number = pages.indexOf(page) + 1
+        if (number > 0) {
+          return number
+        }
+      }
+    }
+  }
+
+  return undefined
 }

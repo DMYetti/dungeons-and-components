@@ -4,6 +4,7 @@ import React from "react"
 import { merge, startCase } from "lodash"
 
 import Dice from "../Dice/Dice"
+import { useLink } from "../Link/Link"
 
 import { signed } from "../../helpers/numbers"
 import { getStatModifier } from "../../helpers/stats"
@@ -14,9 +15,11 @@ import {
   Title,
   Heading,
   Summary,
+  Source,
   InfoList,
   InfoItem,
   InfoLabel,
+  InfoValue,
   Abilities,
   Ability,
   AbilityLabel,
@@ -24,11 +27,13 @@ import {
   Note,
   NoteLabel,
   NoteType,
+  NoteValue,
 } from "./StatBlock.styled"
 
 export interface BaseStatBlockProps
   extends React.ComponentProps<typeof Container> {
   title: string
+  subtitle?: string
   size?: string
   type?: string
   subtype?: string
@@ -75,12 +80,20 @@ export interface BaseStatBlockProps
     damage?: [DiceType, string]
     description?: string
   }>
+  reactions?: Array<{
+    title: string
+    description: string
+  }>
+
+  sourceTitle?: string
+  sourceLink?: string
 
   children?: React.ReactNode
 }
 
 export function BaseStatBlock({
   title,
+  subtitle,
   size,
   type,
   subtype,
@@ -106,6 +119,10 @@ export function BaseStatBlock({
   properties,
   traits,
   actions,
+  reactions,
+
+  sourceTitle,
+  sourceLink,
 
   children,
   ...props
@@ -125,12 +142,15 @@ export function BaseStatBlock({
   const hasProperties = hasValue(properties)
   const hasTraits = hasValue(traits)
   const hasActions = hasValue(actions)
+  const hasReactions = hasValue(reactions)
   const hasChildren = typeof children !== "undefined"
 
+  const ref = useLink(`Stat Block: ${title}`, title)
+
   return (
-    <Container {...props}>
+    <Container {...props} ref={ref}>
       <Title>
-        {title} {pronouns && `(${pronouns})`}
+        {title} {subtitle && `(${subtitle})`} {pronouns && `(${pronouns})`}
       </Title>
       {(size || gender || type || alignment) && (
         <Summary>
@@ -144,6 +164,28 @@ export function BaseStatBlock({
           )}
           {alignment && <span>{startCase(alignment)}</span>}
         </Summary>
+      )}
+
+      {sourceTitle && (
+        <Source>
+          {sourceTitle && (
+            <>
+              [source:{" "}
+              {sourceLink ? (
+                <a
+                  href={sourceLink}
+                  target="_blank"
+                  rel="external noopener noreferrer"
+                >
+                  {sourceTitle}
+                </a>
+              ) : (
+                sourceTitle
+              )}
+              ]
+            </>
+          )}
+        </Source>
       )}
 
       {(armorClass || hitPoints || speed) && (
@@ -253,7 +295,7 @@ export function BaseStatBlock({
                   ?.map(
                     ([title, value]) => `${startCase(title)} ${signed(value)}`,
                   )
-                  .join(", ")}
+                  .join(getDivider(savingThrows.map(([v]) => v)))}
               </InfoItem>
             )}
             {hasSkills && (
@@ -263,7 +305,7 @@ export function BaseStatBlock({
                   ?.map(
                     ([title, value]) => `${startCase(title)} ${signed(value)}`,
                   )
-                  .join(", ")}
+                  .join(getDivider(skills.map(([v]) => v)))}
               </InfoItem>
             )}
             {hasDamageResistances && (
@@ -271,7 +313,7 @@ export function BaseStatBlock({
                 <InfoLabel>Damage Resistances</InfoLabel>
                 {damageResistances
                   ?.map((damageResistance) => startCase(damageResistance))
-                  .join(", ")}
+                  .join(getDivider(damageResistances))}
               </InfoItem>
             )}
             {hasDamageImmunities && (
@@ -279,7 +321,7 @@ export function BaseStatBlock({
                 <InfoLabel>Damage Immunities</InfoLabel>
                 {damageImmunities
                   ?.map((damageImmunity) => startCase(damageImmunity))
-                  .join(", ")}
+                  .join(getDivider(damageImmunities))}
               </InfoItem>
             )}
             {hasDamageVulnerabilities && (
@@ -287,7 +329,7 @@ export function BaseStatBlock({
                 <InfoLabel>Damage Vulnerabilities</InfoLabel>
                 {damageVulnerabilities
                   ?.map((damageVulnerability) => startCase(damageVulnerability))
-                  .join(", ")}
+                  .join(getDivider(damageVulnerabilities))}
               </InfoItem>
             )}
             {hasConditionImmunities && (
@@ -295,19 +337,21 @@ export function BaseStatBlock({
                 <InfoLabel>Condition Immunities</InfoLabel>
                 {conditionImmunities
                   ?.map((conditionImmunity) => startCase(conditionImmunity))
-                  .join(", ")}
+                  .join(getDivider(conditionImmunities))}
               </InfoItem>
             )}
             {hasSenses && (
               <InfoItem>
                 <InfoLabel>Senses</InfoLabel>
-                {senses?.join(", ")}
+                {senses?.join(getDivider(senses))}
               </InfoItem>
             )}
             {hasLanguages && (
               <InfoItem>
                 <InfoLabel>Languages</InfoLabel>
-                {languages?.map((language) => startCase(language)).join(", ")}
+                {languages
+                  ?.map((language) => startCase(language))
+                  .join(getDivider(languages))}
               </InfoItem>
             )}
             {hasChallenge && (
@@ -321,7 +365,7 @@ export function BaseStatBlock({
                 {properties?.map(({ title, description }) => (
                   <InfoItem key={title}>
                     <InfoLabel>{title}</InfoLabel>
-                    {description}
+                    <InfoValue>{description}</InfoValue>
                   </InfoItem>
                 ))}
               </>
@@ -336,8 +380,8 @@ export function BaseStatBlock({
 
           {traits?.map(({ title, description }) => (
             <Note key={title}>
-              <NoteLabel>{title}</NoteLabel>
-              {description}
+              <NoteLabel>{title}.</NoteLabel>
+              <NoteValue>{description}</NoteValue>
             </Note>
           ))}
         </>
@@ -365,14 +409,27 @@ export function BaseStatBlock({
                 </span>
               )}
               {damage && (
-                <span>
+                <>
                   <NoteType>Hit:</NoteType>
                   <Dice value={damage[0]} type={damage[1]} /> damage.
-                </span>
+                </>
               )}
-              {description}
+              <NoteValue>{description}</NoteValue>
             </Note>
           ))}
+
+          {hasReactions && (
+            <>
+              <HorizontalRule />
+
+              {reactions?.map(({ title, description }) => (
+                <Note key={title}>
+                  <NoteLabel>{title}.</NoteLabel>
+                  <NoteValue>{description}</NoteValue>
+                </Note>
+              ))}
+            </>
+          )}
         </>
       )}
 
@@ -407,7 +464,7 @@ const templates: {
   },
 }
 
-export interface StatBlockProps extends Partial<BaseStatBlockProps> {
+export interface StatBlockProps extends BaseStatBlockProps {
   title: string
   template?: keyof typeof templates
 }
@@ -440,4 +497,16 @@ function hasValue(value?: unknown): boolean {
   }
 
   return !!value
+}
+
+function getDivider(values: string[]): string {
+  if (values.findIndex((value) => value.includes(",")) < 0) {
+    return ", "
+  }
+
+  if (values.findIndex((value) => value.includes(";")) < 0) {
+    return "; "
+  }
+
+  return " | "
 }

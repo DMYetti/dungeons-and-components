@@ -6,13 +6,14 @@ import Footer from "./components/Footer/Footer"
 
 import {
   Container,
-  PageTitle as PageTitleBase,
+  ColumnBreak as ColumnBreakBase,
   Heading1 as Heading1Base,
   Heading2 as Heading2Base,
   Heading3 as Heading3Base,
+  PageTitle as PageTitleBase,
 } from "./Page.styled"
 
-export { ColumnBreak } from "./Page.styled"
+export * from "./services/Page/Page"
 
 export interface PageProps extends React.ComponentProps<typeof Container> {
   footer?: boolean
@@ -30,11 +31,17 @@ export default function Page({
   ...props
 }: PageProps): JSX.Element {
   return (
-    <Container story={story} {...props}>
+    <Container story={story} {...props} data-page={footer}>
       {children}
       {footer && !story && <Footer footnote={footnote} number={number} />}
     </Container>
   )
+}
+
+export function ColumnBreak({
+  ...props
+}: React.ComponentProps<typeof ColumnBreakBase>): JSX.Element {
+  return <ColumnBreakBase {...props} />
 }
 
 interface TitlePropTypes {
@@ -47,7 +54,7 @@ export function PageTitle({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof PageTitleBase>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <PageTitleBase {...props} title={name} ref={ref}>
@@ -61,7 +68,7 @@ export function Heading1({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof Heading1Base>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <Heading1Base {...props} title={name} ref={ref}>
@@ -75,7 +82,7 @@ export function Heading2({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof Heading2Base>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <Heading2Base {...props} title={name} ref={ref}>
@@ -89,7 +96,7 @@ export function Heading3({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof Heading3Base>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <Heading3Base {...props} title={name} ref={ref}>

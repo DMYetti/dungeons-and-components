@@ -13,5 +13,5 @@ export function signed(value: number): string {
     return `-${Math.abs(value)}`
   }
 
-  return "0"
+  return "+0"
 }

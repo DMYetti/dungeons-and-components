@@ -1,6 +1,9 @@
+import type { Mode } from "./components/Page/Page"
+
 import React from "react"
 
 import { LinkProvider } from "./components/Link/Link"
+import { PageProvider } from "./components/Page/Page"
 import { Globals, Container as BaseContainer } from "./styled"
 
 export { Globals, Container as BaseContainer } from "./styled"
@@ -10,6 +13,7 @@ export { default as Description } from "./components/Description/Description"
 export { default as Dice } from "./components/Dice/Dice"
 export { default as Image } from "./components/Image/Image"
 export { default as Legalese } from "./components/Legalese/Legalese"
+export { default as MagicItem } from "./components/MagicItem/MagicItem"
 export { default as Note } from "./components/Note/Note"
 export { default as Page } from "./components/Page/Page"
 export { default as Spell } from "./components/Spell/Spell"
@@ -24,20 +28,26 @@ export {
   Heading2,
   Heading3,
   ColumnBreak,
+  usePageMode,
 } from "./components/Page/Page"
 
-interface ContainerProps extends React.ComponentProps<typeof BaseContainer> {
+interface ContainerProps
+  extends Omit<React.ComponentProps<typeof BaseContainer>, "mode"> {
+  mode?: Mode
   children: React.ReactNode
 }
 
 export default function Container({
+  mode = "default",
   children,
   ...props
 }: ContainerProps): JSX.Element {
   return (
-    <LinkProvider>
+    <PageProvider mode={mode}>
       <Globals />
-      <BaseContainer {...props}>{children}</BaseContainer>
-    </LinkProvider>
+      <BaseContainer {...props} mode={mode}>
+        <LinkProvider>{children}</LinkProvider>
+      </BaseContainer>
+    </PageProvider>
   )
 }

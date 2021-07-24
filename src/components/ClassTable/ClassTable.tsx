@@ -16,8 +16,8 @@ type Level<T> = {
 
 export interface ClassTableProps<T> extends TableProps<Level<T>> {
   title: string
-  before?: Column[]
-  after?: Column[]
+  before?: Column<Level<T>>[]
+  after?: Column<Level<T>>[]
   levels: Array<Level<T>>
 }
 
@@ -36,24 +36,24 @@ export default function ClassTable<T>({
       .filter((v) => (typeof v === "number" ? true : false)) as number[]),
   )
 
-  const beforeCols = before.map<Column>(
+  const beforeCols = before.map<Column<Level<T>>>(
     ({ key, label, transform, ...props }) => ({
       key,
       label,
       align: "center",
-      transform: (value, index) =>
-        orDash((transform && transform(value, index)) || value),
+      transform: (value, data, index) =>
+        orDash((transform && transform(value, data, index)) || value),
       ...props,
     }),
   )
 
-  const afterCols = after.map<Column>(
+  const afterCols = after.map<Column<Level<T>>>(
     ({ key, label, transform, ...props }) => ({
       key,
       label,
       align: "center",
-      transform: (value, index) =>
-        orDash((transform && transform(value, index)) || value),
+      transform: (value, data, index) =>
+        orDash((transform && transform(value, data, index)) || value),
       ...props,
     }),
   )
@@ -128,7 +128,7 @@ export default function ClassTable<T>({
             align: "center",
             transform: orDash,
           },
-        ].filter((v) => v) as Column[])
+        ].filter((v) => v) as Column<Level<T>>[])
 
   return (
     <Table
@@ -142,13 +142,13 @@ export default function ClassTable<T>({
           key: "@index",
           label: "Level",
           align: "center",
-          transform: (__, index) => getOrdinal(index + 1),
+          transform: (index: number) => getOrdinal(index + 1),
         },
         {
           key: "@index",
           label: "Proficiency Bonus",
           align: "center",
-          transform: (__, index) => getProficiencyBonus(index),
+          transform: (index: number) => getProficiencyBonus(index),
         },
         ...beforeCols,
         {

@@ -1,3 +1,5 @@
+import type { Mode } from "./components/Page/Page"
+
 import React from "react"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/react"
@@ -34,18 +36,28 @@ export function Globals(): JSX.Element {
   return <Global styles={globalStyles} />
 }
 
-export const Container = styled.div`
+export const Container = styled.div<{
+  mode: Mode
+}>`
   counter-reset: dnc-page-numbers;
 
   @media screen {
-    background-color: #2c3e50;
     padding: 0.25in 0;
+
+    ${({ mode }) => {
+      if (mode === "default") {
+        return `
+          background-color: #132a38;
+        `
+      }
+    }}
 
     > ${Page} {
       margin-right: auto;
       margin-left: auto;
-      box-shadow: 0 0.05in 0.125in #000;
+      box-shadow: none;
     }
+
     > ${Page} + ${Page} {
       margin-top: 0.25in;
     }

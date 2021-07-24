@@ -11,7 +11,7 @@ export const Container = styled.div<{
 }>`
   ${withBreakable}
   ${withWide}
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
 
   ${({ bordered }) =>
     bordered &&
@@ -54,7 +54,7 @@ export const Body = styled.tbody``
 export const Footer = styled.tfoot``
 
 export const Row = styled.tr`
-  ${Body} &:nth-child(odd) {
+  ${Body} &:nth-of-type(odd) {
     background-color: #e0e5c1;
   }
 `

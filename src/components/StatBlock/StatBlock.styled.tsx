@@ -12,15 +12,12 @@ export const Container = styled.div<{
   ${withWide}
 
   font-family: ScalySans;
-  margin: 0.125in 0;
+  margin: 0 0 0.125in;
   border-style: solid;
   border-width: 0.1875in 0.125in;
   border-image: url(${border}) 36 24 fill stretch;
   box-shadow: 0 0.0625in 0.125in #888;
 
-  > :first-child {
-    margin-top: 0;
-  }
   > :last-child {
     margin-bottom: 0;
   }
@@ -53,6 +50,17 @@ export const Summary = styled.div`
   }
 `
 
+export const Source = styled.p`
+  margin: 0 0 0.0625in;
+  span {
+    margin-right: 0.25em;
+  }
+
+  ${Summary} + & {
+    margin-top: -0.5em !important;
+  }
+`
+
 export const InfoList = styled.ul`
   list-style: none;
   margin: 0.0625in 0;
@@ -68,6 +76,10 @@ export const InfoItem = styled.li`
 
 export const InfoLabel = styled.strong`
   margin-right: 0.5em;
+`
+
+export const InfoValue = styled.span`
+  margin-left: 0.25em;
 `
 
 export const Abilities = styled.div`
@@ -104,4 +116,8 @@ export const NoteLabel = styled.strong`
 export const NoteType = styled.em`
   font-family: ScalySans;
   font-style: italic;
+`
+
+export const NoteValue = styled.span`
+  margin-left: 0.25em;
 `
