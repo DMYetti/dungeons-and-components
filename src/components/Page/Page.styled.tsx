@@ -1,6 +1,6 @@
 import type { Mode } from "./services/Page/Page"
 
-import React, { forwardRef, useEffect, useRef, useState } from "react"
+import React, { forwardRef } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
 
@@ -212,28 +212,28 @@ export const BaseContainer = styled.div<{
 export const Container = forwardRef<
   HTMLDivElement,
   Omit<React.ComponentProps<typeof BaseContainer>, "mode">
->((props, ref1) => {
-  const [error, setError] = useState(props.error ?? false)
-  const ref2 = useRef<HTMLDivElement>(null)
+>((props, ref) => {
   const mode = usePageMode()
+  // const [error, setError] = useState(props.error ?? false)
+  // const ref2 = useRef<HTMLDivElement>(null)
 
-  const ref = (ref1 || ref2) as typeof ref2
+  // const ref = (ref1 || ref2) as typeof ref2
 
-  useEffect(() => {
-    if (typeof props.error !== "undefined") {
-      setError(props.error)
-      return
-    }
+  // useEffect(() => {
+  //   if (typeof props.error !== "undefined") {
+  //     setError(props.error)
+  //     return
+  //   }
 
-    const page = ref.current && ref.current
-    if (page) {
-      const overflow =
-        page.offsetWidth < page.scrollWidth ||
-        page.offsetHeight < page.scrollHeight
+  //   const page = ref.current && ref.current
+  //   if (page) {
+  //     const overflow =
+  //       page.offsetWidth < page.scrollWidth ||
+  //       page.offsetHeight < page.scrollHeight
 
-      setError(overflow)
-    }
-  }, [ref, props.error])
+  //     setError(overflow)
+  //   }
+  // }, [ref, props.error])
 
-  return <BaseContainer {...props} ref={ref} mode={mode} error={error} />
+  return <BaseContainer {...props} ref={ref} mode={mode} />
 })
