@@ -4,6 +4,7 @@ import React from "react"
 import { merge, startCase } from "lodash"
 
 import Dice from "../Dice/Dice"
+import { useLink } from "../Link/Link"
 
 import { signed } from "../../helpers/numbers"
 import { getStatModifier } from "../../helpers/stats"
@@ -32,6 +33,7 @@ import {
 export interface BaseStatBlockProps
   extends React.ComponentProps<typeof Container> {
   title: string
+  subtitle?: string
   size?: string
   type?: string
   subtype?: string
@@ -91,6 +93,7 @@ export interface BaseStatBlockProps
 
 export function BaseStatBlock({
   title,
+  subtitle,
   size,
   type,
   subtype,
@@ -142,10 +145,12 @@ export function BaseStatBlock({
   const hasReactions = hasValue(reactions)
   const hasChildren = typeof children !== "undefined"
 
+  const ref = useLink(`Stat Block: ${title}`, title)
+
   return (
-    <Container {...props}>
+    <Container {...props} ref={ref}>
       <Title>
-        {title} {pronouns && `(${pronouns})`}
+        {title} {subtitle && `(${subtitle})`} {pronouns && `(${pronouns})`}
       </Title>
       {(size || gender || type || alignment) && (
         <Summary>

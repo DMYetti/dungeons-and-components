@@ -12,8 +12,8 @@ import { Container } from "./Link.styled"
 export type LinkTarget = React.RefObject<HTMLHeadingElement>
 
 const Context = createContext<{
-  links: Record<string, LinkTarget>
-  register: (ref: LinkTarget, name: string) => void
+  links: Record<string, { ref: LinkTarget; label: string }>
+  register: (ref: LinkTarget, name: string, label: string) => void
 }>({
   links: {},
   register: () => undefined,
@@ -30,7 +30,7 @@ export default function Link({
   ...props
 }: LinkProps): JSX.Element {
   const links = useLinks()
-  const link = links[name]
+  const link = links[name]?.ref
 
   function handleClick() {
     link?.current?.scrollIntoView({
@@ -51,30 +51,33 @@ export interface LinkProviderProps {
 
 export function LinkProvider({ children }: LinkProviderProps): JSX.Element {
   const [, forceUpdate] = useState({})
-  const links = useRef<Record<string, LinkTarget>>({})
+  const links = useRef<Record<string, { ref: LinkTarget; label: string }>>({})
 
   const changed = useRef<Record<string, boolean>>({})
   const warned = useRef<Record<string, boolean>>({})
 
-  const register = useCallback((ref: LinkTarget, name: string) => {
-    if (links.current[name] !== ref) {
-      if (changed.current[name] && !warned.current[name]) {
-        console.warn(`Duplicate Link definition: ${name}`)
-        warned.current[name] = true
+  const register = useCallback(
+    (ref: LinkTarget, name: string, label: string) => {
+      if (links.current[name]?.ref !== ref) {
+        if (changed.current[name] && !warned.current[name]) {
+          console.warn(`Duplicate Link definition: ${name}`)
+          warned.current[name] = true
+        }
+
+        links.current[name] = { ref, label }
+        changed.current[name] = true
+
+        forceUpdate({})
+
+        return () => {
+          delete changed.current[name]
+          delete links.current[name]
+          delete warned.current[name]
+        }
       }
-
-      links.current[name] = ref
-      changed.current[name] = true
-
-      forceUpdate({})
-
-      return () => {
-        delete changed.current[name]
-        delete links.current[name]
-        delete warned.current[name]
-      }
-    }
-  }, [])
+    },
+    [],
+  )
 
   return (
     <Context.Provider value={{ links: links.current, register }}>
@@ -83,17 +86,17 @@ export function LinkProvider({ children }: LinkProviderProps): JSX.Element {
   )
 }
 
-export function useLinks(): Record<string, LinkTarget> {
+export function useLinks(): Record<string, { ref: LinkTarget; label: string }> {
   const { links } = useContext(Context)
 
   return links
 }
 
-export function useLink(name: string): LinkTarget {
+export function useLink(name: string, label: string): LinkTarget {
   const { register } = useContext(Context)
   const ref = useRef<HTMLHeadingElement>(null)
 
-  useEffect(() => register(ref, name), [register, name])
+  useEffect(() => register(ref, name, label), [register, name, label])
 
   return ref
 }

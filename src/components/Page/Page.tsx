@@ -54,7 +54,7 @@ export function PageTitle({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof PageTitleBase>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <PageTitleBase {...props} title={name} ref={ref}>
@@ -68,7 +68,7 @@ export function Heading1({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof Heading1Base>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <Heading1Base {...props} title={name} ref={ref}>
@@ -82,7 +82,7 @@ export function Heading2({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof Heading2Base>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <Heading2Base {...props} title={name} ref={ref}>
@@ -96,7 +96,7 @@ export function Heading3({
   children,
   ...props
 }: TitlePropTypes & React.ComponentProps<typeof Heading3Base>): JSX.Element {
-  const ref = useLink(name || children)
+  const ref = useLink(name || children, name || children)
 
   return (
     <Heading3Base {...props} title={name} ref={ref}>

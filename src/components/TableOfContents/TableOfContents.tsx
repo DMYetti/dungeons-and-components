@@ -67,35 +67,40 @@ function Rows({ level, items: items_ }: RowsProps): JSX.Element {
   )
 }
 
-function normalize(links: Record<string, LinkTarget>, list: ItemsInput): Items {
+function normalize(
+  links: Record<string, { ref: LinkTarget; label: string }>,
+  list: ItemsInput,
+): Items {
   return list.map((item) => {
     if (Array.isArray(item)) {
       return normalize(links, item)
     }
 
     if (typeof item === "string") {
+      const link = links[item]
+
       return {
-        label: item,
         name: item,
-        page: getPage(links, item),
+        label: link?.label || item,
+        page: getPage(link),
       }
     }
 
+    const link = links[item.name]
+
     return {
       ...item,
-      page:
-        typeof item.page === "number" ? item.page : getPage(links, item.name),
+      page: typeof item.page === "number" ? item.page : getPage(link),
     }
   })
 }
 
-function getPage(
-  links: Record<string, LinkTarget>,
-  name: string,
-): number | undefined {
-  const link = links[name]?.current
+function getPage(link?: {
+  ref: LinkTarget
+  label: string
+}): number | undefined {
   if (link) {
-    const page = link.closest("[data-page=true]")
+    const page = link.ref.current?.closest("[data-page=true]")
     if (page) {
       const container = page.parentElement
       if (container) {

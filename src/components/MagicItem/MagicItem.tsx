@@ -1,6 +1,8 @@
 import React from "react"
 import { startCase } from "lodash"
 
+import { useLink } from "../Link/Link"
+
 import { Container, Title, Info, Source } from "./MagicItem.styled"
 
 export interface MagicItemProps extends React.ComponentProps<typeof Container> {
@@ -23,8 +25,10 @@ export default function MagicItem({
   children,
   ...props
 }: MagicItemProps): JSX.Element {
+  const ref = useLink(`Magic Item: ${title}`, title)
+
   return (
-    <Container {...props}>
+    <Container {...props} ref={ref}>
       <Title>{title}</Title>
 
       <Info>

@@ -53,7 +53,7 @@ export const Label = styled.div<{
 
       &:after {
         font-family: BookSanity;
-        font-size: 0.317cm;
+        font-size: 0.125in;
         font-weight: normal;
         color: black;
         content: " .............................."
@@ -73,7 +73,8 @@ export const PageNumber = styled.div<{
   ${({ level }) =>
     level === 0 &&
     css`
-      line-height: ${0.25 * 1.25}in;
+      margin-top: ${(0.25 * 1.25 * 1) / 4}in;
+      line-height: ${(0.25 * 1.25 * 3) / 4}in;
     `}
 
   ${({ level }) =>
