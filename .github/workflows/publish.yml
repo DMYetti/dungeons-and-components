@@ -3,8 +3,8 @@ name: Publish
 on:
   workflow_dispatch:
     inputs:
-      type:
-        description: "Version segment to increment"
+      segment:
+        description: "The version segment to increment. (major, minor, or patch)"
         required: true
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --local user.email "Workflow: ${{ env.GITHUB_WORKFLOW }}[bot]"
           git config --local user.name "${{ env.GITHUB_WORKFLOW }}[bot]@workflow"
-          npm version ${{ github.event.inputs.type }} -m "Publish v%s"
+          npm version ${{ github.event.inputs.segment }} -m "Publish v%s"
 
       - name: Publish
         uses: JS-DevTools/npm-publish@v1

@@ -2,7 +2,7 @@
 
 **Dungeons and Components** is a React component library for working with mechanics from Dungeons and Dragons Fifth Edition. It is useful both for adding elements to existing projects, as well as creating standalone projects, or even creating full sourcebooks. It also includes special printing styles so that a browser's _print to PDF_ feature can be utilized to produce a well-formatted PDF.
 
-> Note: This is a very early personal project. I am very interested in what you do with it, but please do not rely on it for important things yet.
+> Note: This is an early personal project. I am using it in a few places, and the APIs will be as stable as possible, though there are likely some as-yet-undiscovered issues. I am very interested in what you do with it, but relying on it for important projects is unadvised.
 
 ## Credits
 
