@@ -10,4 +10,4 @@ jobs:
       - name: Publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo ${NPM_TOKEN:0:4}
+        run: echo ${NPM_TOKEN:0}
